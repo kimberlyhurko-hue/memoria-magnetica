@@ -1,0 +1,174 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 760" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Mapa antigo ilustrado com sete ilhas ligadas por um caminho pontilhado">
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e8d3a2"/>
+      <stop offset="0.48" stop-color="#dcc087"/>
+      <stop offset="1" stop-color="#bfa06a"/>
+    </linearGradient>
+    <radialGradient id="vignette" cx="50%" cy="48%" r="72%">
+      <stop offset="0.55" stop-color="#5a4423" stop-opacity="0"/>
+      <stop offset="1" stop-color="#4b331d" stop-opacity="0.38"/>
+    </radialGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4d8f95" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#2f6f7d" stop-opacity="0.3"/>
+    </linearGradient>
+    <linearGradient id="route" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#6c7f3b"/>
+      <stop offset="0.35" stop-color="#c98a36"/>
+      <stop offset="0.72" stop-color="#b56a2c"/>
+      <stop offset="1" stop-color="#2f8ea8"/>
+    </linearGradient>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.16"/></feComponentTransfer>
+    </filter>
+    <filter id="softGlow"><feGaussianBlur stdDeviation="7"/></filter>
+    <pattern id="waves" width="86" height="42" patternUnits="userSpaceOnUse">
+      <path d="M0 24 Q18 10 36 24 T72 24 T108 24" fill="none" stroke="#2f6f7d" stroke-opacity="0.16" stroke-width="2"/>
+      <path d="M-20 36 Q-2 24 16 36 T52 36" fill="none" stroke="#2f6f7d" stroke-opacity="0.1" stroke-width="1.5"/>
+    </pattern>
+    <pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse">
+      <path d="M100 0H0V100" fill="none" stroke="#6b522f" stroke-opacity="0.1" stroke-width="1"/>
+    </pattern>
+    <g id="shore">
+      <path d="M-78 -16 C-74 -54 -34 -70 4 -60 C42 -73 86 -46 82 -8 C96 26 64 60 22 56 C-18 70 -70 48 -78 12 Z" fill="#bfa06a" stroke="#5a4423" stroke-width="3"/>
+      <path d="M-68 -12 C-62 -44 -28 -57 5 -49 C40 -60 74 -37 71 -6 C82 22 56 49 20 46 C-14 58 -59 39 -68 9 Z" fill="#ead8ad"/>
+      <path d="M-58 -8 C-52 -34 -24 -44 4 -38 C36 -48 62 -29 60 -4 C68 19 48 39 18 37 C-10 47 -48 31 -58 7 Z" fill="#8f9a5e" opacity="0.55"/>
+    </g>
+    <g id="tree">
+      <path d="M0 14 L0 -4" stroke="#5a4423" stroke-width="3" stroke-linecap="round"/>
+      <path d="M-13 -3 Q0 -26 13 -3 Q8 8 0 8 Q-8 8 -13 -3Z" fill="#5d6b34"/>
+      <path d="M-8 -6 Q0 -20 8 -6" fill="none" stroke="#a0a462" stroke-width="2" opacity="0.8"/>
+    </g>
+  </defs>
+
+  <rect width="1600" height="760" fill="url(#paper)"/>
+  <rect width="1600" height="760" fill="url(#grid)"/>
+  <path d="M0 90 Q240 40 460 120 T900 100 T1300 140 T1600 90 V760 H0Z" fill="url(#sea)"/>
+  <rect width="1600" height="760" fill="url(#waves)"/>
+  <rect width="1600" height="760" filter="url(#grain)" opacity="0.5" style="mix-blend-mode:multiply"/>
+
+  <!-- moldura -->
+  <rect x="22" y="22" width="1556" height="716" rx="8" fill="none" stroke="#5a4423" stroke-opacity="0.7" stroke-width="3"/>
+  <rect x="34" y="34" width="1532" height="692" rx="4" fill="none" stroke="#5a4423" stroke-opacity="0.42" stroke-width="1.5"/>
+  <g fill="none" stroke="#5a4423" stroke-opacity="0.65" stroke-width="2">
+    <path d="M48 92 Q48 48 92 48 M1552 92 Q1552 48 1508 48 M48 668 Q48 712 92 712 M1552 668 Q1552 712 1508 712"/>
+    <path d="M62 76 Q76 76 76 62 M1538 76 Q1524 76 1524 62 M62 684 Q76 684 76 698 M1538 684 Q1524 684 1524 698"/>
+  </g>
+  <g fill="#5a4423" opacity="0.55">
+    <circle cx="800" cy="34" r="5"/><circle cx="800" cy="726" r="5"/>
+    <path d="M800 44 l8 12 -8 12 -8 -12z"/><path d="M800 704 l8 12 -8 12 -8 -12z"/>
+  </g>
+
+  <!-- rosa dos ventos -->
+  <g transform="translate(1440 624)" opacity="0.75">
+    <circle r="54" fill="none" stroke="#5a4423" stroke-width="2"/>
+    <circle r="42" fill="none" stroke="#5a4423" stroke-opacity="0.5"/>
+    <path d="M0 -62 L13 -13 L62 0 L13 13 L0 62 L-13 13 L-62 0 L-13 -13Z" fill="#c98a36" stroke="#5a4423" stroke-width="2"/>
+    <path d="M0 -62 L13 -13 L0 0Z M62 0 L13 13 L0 0Z M0 62 L-13 13 L0 0Z M-62 0 L-13 -13 L0 0Z" fill="#f0dfb6" opacity="0.85"/>
+    <circle r="7" fill="#5a4423"/>
+    <path d="M0 -76 v10 M0 66 v10 M-76 0 h10 M66 0 h10" stroke="#5a4423" stroke-width="2"/>
+  </g>
+
+  <!-- criaturas e detalhes do mar -->
+  <g fill="none" stroke="#4f6f69" stroke-opacity="0.35" stroke-width="2">
+    <path d="M210 250 q34 -22 68 0 q34 22 68 0 M210 270 q34 -22 68 0 q34 22 68 0"/>
+    <path d="M1130 640 q30 -20 60 0 q30 20 60 0 M1130 658 q30 -20 60 0 q30 20 60 0"/>
+    <path d="M700 190 q28 -18 56 0 q28 18 56 0"/>
+  </g>
+  <g fill="#5a4423" opacity="0.28">
+    <path d="M1290 520 q26 -18 52 0 l-10 -20 q-16 8 -32 0z"/>
+    <path d="M340 640 q26 -18 52 0 l-10 -20 q-16 8 -32 0z"/>
+  </g>
+
+  <!-- caminho pontilhado -->
+  <path d="M170 560 C250 520 320 470 390 420 S540 520 620 510 S760 340 820 330 S960 470 1040 450 S1190 290 1260 280 S1390 190 1450 160"
+        fill="none" stroke="url(#route)" stroke-width="14" stroke-opacity="0.16" filter="url(#softGlow)"/>
+  <path d="M170 560 C250 520 320 470 390 420 S540 520 620 510 S760 340 820 330 S960 470 1040 450 S1190 290 1260 280 S1390 190 1450 160"
+        fill="none" stroke="url(#route)" stroke-width="4" stroke-linecap="round" stroke-dasharray="2 16"/>
+
+  <!-- ilha 1: vida -->
+  <g transform="translate(170 560)">
+    <use href="#shore"/>
+    <use href="#tree" transform="translate(-28 8) scale(.9)"/>
+    <use href="#tree" transform="translate(4 0) scale(1.15)"/>
+    <use href="#tree" transform="translate(34 12) scale(.8)"/>
+    <circle cx="0" cy="18" r="9" fill="#5c8a55" stroke="#3e6a42" stroke-width="2"/>
+    <path d="M0 18 q-16 -18 -26 -8 q12 2 26 8 q14 -14 28 -9 q-14 2 -28 9z" fill="#a0a462"/>
+  </g>
+
+  <!-- ilha 2: animais -->
+  <g transform="translate(390 420) scale(1.08)">
+    <use href="#shore"/>
+    <use href="#tree" transform="translate(-34 6) scale(1.1)"/>
+    <use href="#tree" transform="translate(30 4) scale(1.2)"/>
+    <g fill="#5a4423" opacity="0.75">
+      <ellipse cx="2" cy="18" rx="10" ry="8"/><circle cx="-10" cy="5" r="4"/><circle cx="0" cy="0" r="4"/><circle cx="11" cy="4" r="4"/><circle cx="19" cy="13" r="4"/>
+    </g>
+  </g>
+
+  <!-- ilha 3: humana -->
+  <g transform="translate(620 510) scale(.98)">
+    <use href="#shore"/>
+    <path d="M-34 22 Q-30 -22 0 -30 Q30 -22 34 22Z" fill="#9a7a53" stroke="#5a4423" stroke-width="3"/>
+    <path d="M-18 20 Q-14 -8 0 -14 Q14 -8 18 20Z" fill="#5d4a35"/>
+    <g fill="#a66c43" opacity="0.9">
+      <ellipse cx="-42" cy="10" rx="7" ry="10" transform="rotate(-25 -42 10)"/>
+      <ellipse cx="40" cy="12" rx="7" ry="10" transform="rotate(25 40 12)"/>
+    </g>
+  </g>
+
+  <!-- ilha 4: registros -->
+  <g transform="translate(820 330) scale(1.05)">
+    <use href="#shore"/>
+    <g stroke="#5a4423" stroke-width="2" fill="#f1dfb6">
+      <rect x="-44" y="-28" width="88" height="50" rx="4"/>
+      <path d="M-44 -14 H44 M-22 -28 V22 M0 -28 V22 M22 -28 V22"/>
+    </g>
+    <path d="M-52 28 Q0 12 52 28" fill="none" stroke="#5a4423" stroke-width="3"/>
+    <path d="M-28 -46 q18 -12 36 0 l-6 22 q-12 -6 -24 0z" fill="#e9d3a0" stroke="#5a4423" stroke-width="2"/>
+  </g>
+
+  <!-- ilha 5: mecânica -->
+  <g transform="translate(1040 450) scale(1.02)">
+    <use href="#shore"/>
+    <g fill="none" stroke="#5a4423" stroke-width="5">
+      <circle cx="0" cy="0" r="30" stroke-dasharray="8 6"/>
+      <circle cx="0" cy="0" r="13"/>
+      <circle cx="0" cy="0" r="4" fill="#5a4423"/>
+    </g>
+    <g fill="#a4763f" stroke="#5a4423" stroke-width="2">
+      <circle cx="-48" cy="18" r="10"/><circle cx="48" cy="-12" r="8"/>
+    </g>
+  </g>
+
+  <!-- ilha 6: eletrônica -->
+  <g transform="translate(1260 280) scale(1.02)">
+    <use href="#shore"/>
+    <g fill="none" stroke="#397b91" stroke-width="3" opacity="0.9">
+      <path d="M-46 -18 H-18 V-34 H18 V-18 H46 M-46 18 H-18 V34 H18 V18 H46"/>
+      <path d="M-18 -34 V-18 M18 -34 V-18 M-18 34 V18 M18 34 V18"/>
+    </g>
+    <rect x="-20" y="-14" width="40" height="28" rx="4" fill="#2d6680" stroke="#1d4b60" stroke-width="3"/>
+    <g fill="#bfe6f1"><circle cx="-10" cy="-4" r="3"/><circle cx="8" cy="6" r="3"/><circle cx="2" cy="-7" r="2"/></g>
+  </g>
+
+  <!-- ilha 7: digital -->
+  <g transform="translate(1450 160) scale(.95)">
+    <use href="#shore"/>
+    <g fill="#2f6f89" stroke="#1d4b60" stroke-width="2">
+      <path d="M-26 24 L-18 -26 L0 -44 L18 -26 L26 24Z"/>
+      <rect x="-40" y="18" width="80" height="16" rx="3"/>
+    </g>
+    <g fill="#cfeef7" opacity="0.9">
+      <circle cx="0" cy="-30" r="4"/><circle cx="-12" cy="-8" r="3"/><circle cx="12" cy="2" r="3"/>
+    </g>
+    <g fill="none" stroke="#8adcf0" stroke-opacity="0.7" stroke-width="2">
+      <path d="M-60 -20 H-38 M38 -34 H62 M-54 30 H-34 M34 36 H60"/>
+    </g>
+  </g>
+
+  <rect width="1600" height="760" fill="url(#vignette)" pointer-events="none"/>
+</svg>

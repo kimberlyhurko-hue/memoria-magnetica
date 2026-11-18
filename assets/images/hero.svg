@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Floresta antiga que se transforma em um mundo digital">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="1" y2="0.3">
+      <stop offset="0" stop-color="#2b3218"/><stop offset="0.42" stop-color="#4a4a24"/><stop offset="0.62" stop-color="#244f52"/><stop offset="1" stop-color="#16202a"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="26%" cy="30%" r="46%">
+      <stop offset="0" stop-color="#f0c66b" stop-opacity="0.85"/><stop offset="0.45" stop-color="#c98a36" stop-opacity="0.3"/><stop offset="1" stop-color="#c98a36" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="cyanGlow" cx="80%" cy="52%" r="42%">
+      <stop offset="0" stop-color="#2f8ea8" stop-opacity="0.42"/><stop offset="1" stop-color="#2f8ea8" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="pathGlow" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#c98a36" stop-opacity="0"/><stop offset="0.3" stop-color="#e7cf94" stop-opacity="0.85"/><stop offset="0.7" stop-color="#2f8ea8" stop-opacity="0.8"/><stop offset="1" stop-color="#2f8ea8" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="trunk" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#10281d"/><stop offset="0.5" stop-color="#2a4a30"/><stop offset="1" stop-color="#0d2118"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2f8ea8" stop-opacity="0.16"/><stop offset="1" stop-color="#1d6076" stop-opacity="0.05"/>
+    </linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="9"/></filter>
+    <filter id="haze"><feGaussianBlur stdDeviation="34"/></filter>
+    <pattern id="grid" width="64" height="64" patternUnits="userSpaceOnUse">
+      <path d="M64 0 L0 0 0 64" fill="none" stroke="#2f8ea8" stroke-width="1" opacity="0.09"/>
+    </pattern>
+    <filter id="pintura">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012 0.024" numOctaves="4" seed="7" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.22"/></feComponentTransfer>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <rect width="1600" height="900" fill="url(#sun)"/>
+  <rect x="780" width="820" height="900" fill="url(#grid)"/>
+  <ellipse cx="1280" cy="470" rx="420" ry="380" fill="url(#cyanGlow)"/>
+
+  <!-- raios de sol -->
+  <g fill="#f6e3ad" opacity="0.09">
+    <path d="M360 60 L470 60 L900 900 L700 900Z"/>
+    <path d="M520 30 L575 30 L1050 900 L910 900Z"/>
+    <path d="M180 90 L230 90 L560 900 L450 900Z"/>
+  </g>
+
+  <!-- camadas de árvores -->
+  <g opacity="0.35" fill="#3c6748">
+    <path d="M0 630 Q120 540 240 610 Q350 520 470 600 Q590 520 720 610 Q840 540 960 620 L960 900 L0 900Z"/>
+  </g>
+  <g opacity="0.6" fill="#244b34">
+    <path d="M0 700 Q160 610 300 690 Q430 600 560 690 Q690 610 820 700 L820 900 L0 900Z"/>
+  </g>
+
+  <!-- troncos -->
+  <g fill="url(#trunk)">
+    <path d="M90 900 L112 200 Q130 170 148 200 L176 900Z"/>
+    <path d="M330 900 L352 120 Q370 92 392 120 L420 900Z"/>
+    <path d="M610 900 L632 230 Q650 200 672 230 L700 900Z"/>
+    <path d="M760 900 L780 300 Q796 274 814 300 L838 900Z"/>
+    <path d="M1490 900 L1510 240 Q1528 210 1550 240 L1576 900Z"/>
+  </g>
+  <g stroke="#5d6b34" stroke-width="6" fill="none" opacity="0.7">
+    <path d="M130 330 Q210 270 268 290 M130 470 Q220 420 300 448 M370 250 Q300 210 250 226 M372 390 Q470 340 540 366 M650 350 Q720 300 790 320 M655 520 Q590 470 540 486"/>
+  </g>
+  <g fill="#5d6b34" opacity="0.75">
+    <ellipse cx="120" cy="180" rx="180" ry="120"/><ellipse cx="370" cy="130" rx="210" ry="130"/>
+    <ellipse cx="640" cy="210" rx="180" ry="110"/><ellipse cx="820" cy="280" rx="130" ry="90"/>
+  </g>
+  <g fill="#a0a462" opacity="0.35">
+    <ellipse cx="230" cy="120" rx="150" ry="80"/><ellipse cx="520" cy="180" rx="140" ry="80"/>
+  </g>
+
+  <!-- vaga luminosa no centro -->
+  <path d="M300 880 Q500 760 640 820 Q800 890 940 760 Q1090 620 1280 700" fill="none" stroke="url(#pathGlow)" stroke-width="22" opacity="0.35" filter="url(#glow)"/>
+  <path d="M300 880 Q500 760 640 820 Q800 890 940 760 Q1090 620 1280 700" fill="none" stroke="url(#pathGlow)" stroke-width="4"/>
+
+  <!-- lado tecnológico -->
+  <g stroke="#399BC0" fill="none" opacity="0.5">
+    <path d="M900 190 H1080 V270 H1240 V170 H1420"/>
+    <path d="M880 350 H1010 V430 H1180 V330 H1460"/>
+    <path d="M950 560 H1120 V640 H1320 V520 H1520"/>
+    <path d="M1020 760 H1200 V700 H1450"/>
+    <path d="M1080 270 V350 M1240 170 V270 M1180 330 V430 M1320 520 V640"/>
+  </g>
+  <g fill="#2f8ea8" opacity="0.85">
+    <circle cx="1080" cy="270" r="6"/><circle cx="1240" cy="170" r="5"/><circle cx="1180" cy="330" r="5"/>
+    <circle cx="1320" cy="520" r="6"/><circle cx="1120" cy="640" r="4"/><circle cx="1420" cy="170" r="4"/>
+  </g>
+  <g fill="#2f8ea8" opacity="0.18" filter="url(#glow)">
+    <circle cx="1080" cy="270" r="22"/><circle cx="1320" cy="520" r="24"/><circle cx="1180" cy="330" r="18"/>
+  </g>
+  <g>
+    <rect x="1180" y="380" width="250" height="120" rx="10" fill="url(#panel)" stroke="#2f8ea8" stroke-opacity="0.35"/>
+    <path d="M1205 412 H1360 M1205 436 H1400 M1205 460 H1330 M1205 484 H1380" stroke="#2f8ea8" stroke-opacity="0.4" stroke-width="3" stroke-linecap="round"/>
+    <rect x="980" y="650" width="200" height="86" rx="8" fill="url(#panel)" stroke="#2f8ea8" stroke-opacity="0.28"/>
+    <path d="M1002 682 H1140 M1002 706 H1100" stroke="#2f8ea8" stroke-opacity="0.35" stroke-width="3"/>
+  </g>
+
+  <!-- partículas -->
+  <g fill="#F3D89B">
+    <circle cx="220" cy="380" r="3" opacity="0.8"/><circle cx="480" cy="250" r="2.5" opacity="0.7"/>
+    <circle cx="590" cy="520" r="3" opacity="0.6"/><circle cx="310" cy="640" r="2" opacity="0.7"/>
+    <circle cx="720" cy="180" r="2.6" opacity="0.65"/>
+  </g>
+  <g fill="#D9EDF5">
+    <circle cx="1300" cy="290" r="2.6" opacity="0.8"/><circle cx="1450" cy="600" r="2" opacity="0.7"/>
+    <circle cx="1050" cy="480" r="2.4" opacity="0.6"/><circle cx="1380" cy="780" r="2" opacity="0.6"/>
+  </g>
+  <rect width="1600" height="900" fill="#07130f" opacity="0.12"/>
+  <rect width="1600" height="900" filter="url(#pintura)" opacity="0.5" style="mix-blend-mode:soft-light"/>
+</svg>

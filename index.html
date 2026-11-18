@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1914">
+  <meta name="description" content="Uma jornada ilustrada pela evolução da memória: da vida celular aos sistemas computacionais.">
+  <title>A Evolução da Memória — Uma Jornada Ilustrada</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="particles" id="particles" aria-hidden="true"></div>
+
+  <header class="site-header" id="siteHeader">
+    <a class="brand" href="#inicio" data-nav="inicio" aria-label="Voltar ao início">
+      <span class="brand-mark" aria-hidden="true">✦</span>
+      <span class="brand-text">A Evolução da Memória</span>
+    </a>
+    <nav class="site-nav" id="siteNav" aria-label="Navegação principal">
+      <a href="#prologo" data-nav="prologo">Prólogo</a>
+      <a href="#mapa" data-nav="mapa">Mapa</a>
+      <a href="#jornada" data-nav="jornada">Jornada</a>
+      <a href="#comparacao" data-nav="comparacao">Comparar</a>
+    </nav>
+    <div class="header-progress" title="Progresso da jornada">
+      <span class="progress-label" id="headerProgressLabel">0/7</span>
+      <span class="progress-track"><span class="progress-fill" id="headerProgressFill"></span></span>
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="siteNav">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <main>
+    <!-- ABERTURA -->
+    <section class="hero" id="inicio">
+      <div class="hero-bg" role="img" aria-label="Floresta antiga que se transforma em um mundo digital luminoso"></div>
+      <div class="hero-veil" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="eyebrow-line"></span> Um livro que atravessa o tempo</p>
+          <h1>A Evolução<br><span>da Memória</span></h1>
+          <p class="hero-lead">Da primeira resposta de uma célula ao brilho de um chip: uma jornada ilustrada pela forma como a vida aprendeu a lembrar.</p>
+          <div class="hero-actions">
+            <a class="btn btn-gold" href="#prologo">Começar a explorar <span aria-hidden="true">→</span></a>
+            <button class="btn btn-quiet" id="heroMapBtn" type="button">Ver mapa da jornada</button>
+          </div>
+          <p class="hero-meta">7 fases &nbsp;·&nbsp; ilustrações originais &nbsp;·&nbsp; uma história em sete capítulos</p>
+        </div>
+        <aside class="hero-aside" aria-label="Frase de abertura">
+          <div class="hero-aside-inner">
+            <span class="aside-flourish" aria-hidden="true">✦</span>
+            <p class="hero-quote">“Toda lembrança começa com um pequeno registro.”</p>
+            <span class="aside-flourish" aria-hidden="true">· · ·</span>
+          </div>
+        </aside>
+      </div>
+      <a class="scroll-hint" href="#prologo" aria-label="Rolar para o prólogo"><span aria-hidden="true">⌄</span></a>
+    </section>
+
+    <!-- PRÓLOGO -->
+    <section class="section prologo" id="prologo">
+      <div class="section-head">
+        <p class="kicker">Prólogo <span class="kicker-dot">✦</span> O primeiro fio</p>
+        <h2>O que é memória?</h2>
+        <p class="section-lead">Memória é a capacidade de registrar, guardar e recuperar informações. Graças a ela, um ser — ou uma máquina — aprende com o passado e escolhe no presente.</p>
+      </div>
+
+      <div class="prologo-grid">
+        <article class="concept-card">
+          <div class="concept-icon" aria-hidden="true">◉</div>
+          <h3>Registrar</h3>
+          <p>Captar um sinal do mundo: uma luz, um som, um cheiro, um toque.</p>
+        </article>
+        <article class="concept-card">
+          <div class="concept-icon" aria-hidden="true">▣</div>
+          <h3>Guardar</h3>
+          <p>Manter essa informação por alguns segundos, anos ou séculos.</p>
+        </article>
+        <article class="concept-card">
+          <div class="concept-icon" aria-hidden="true">↺</div>
+          <h3>Recuperar</h3>
+          <p>Trazê-la de volta quando ela ajuda a entender ou a agir.</p>
+        </article>
+      </div>
+
+      <div class="nota-dialogue prologo-dialogue">
+        <span class="nota-marca" aria-hidden="true">✦</span>
+        <div>
+          <span class="nota-etiqueta">O fio da história</span>
+          <p>Siga este fio desde as menores estruturas da vida até os sistemas que guardam o mundo digital.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAPA / LINHA DO TEMPO -->
+    <section class="section mapa" id="mapa">
+      <div class="section-head">
+        <p class="kicker">O atlas da memória <span class="kicker-dot">✦</span> Mapa da jornada</p>
+        <h2>Sete ilhas, uma mesma história</h2>
+        <p class="section-lead">Siga o caminho pontilhado pelo mar do tempo. Cada ilha guarda uma forma de lembrar — toque em qualquer uma para desembarcar. A exploração é livre, e as respostas só marcam o seu progresso.</p>
+      </div>
+
+      <div class="map-frame">
+        <div class="map-canvas" id="mapCanvas">
+          <picture class="map-art" aria-hidden="true">
+            <source media="(max-width: 680px)" srcset="assets/images/mapa-mundo-mobile.svg">
+            <img src="assets/images/mapa-mundo.svg" alt="" width="1600" height="760">
+          </picture>
+          <div class="map-path" id="mapPath" aria-label="Mapa interativo das sete fases"></div>
+          <div class="map-legend" aria-hidden="true">
+            <span class="legend-dot"></span> ilhas visitadas &nbsp;·&nbsp; <span class="legend-ring"></span> próxima parada
+          </div>
+        </div>
+      </div>
+
+      <div class="mini-curiosidades">
+        <p class="mini-curiosidades-title">✧ Curiosidades encontradas no caminho</p>
+        <div class="mini-grid">
+          <article class="mini-card"><span>01</span><p>Até células possuem mecanismos de memória: elas reconhecem sinais e ajustam suas respostas.</p></article>
+          <article class="mini-card"><span>02</span><p>Os primeiros humanos registravam o mundo em paredes de pedra, com desenhos e símbolos.</p></article>
+          <article class="mini-card"><span>03</span><p>A RAM é a mesa de trabalho do computador; a ROM é o manual que não se apaga.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- JORNADA INTERATIVA -->
+    <section class="jornada era-organic" id="jornada" data-era="organic">
+      <div class="stage-bg" id="stageBgA" aria-hidden="true"></div>
+      <div class="stage-bg" id="stageBgB" aria-hidden="true"></div>
+      <div class="stage-veil" aria-hidden="true"></div>
+
+      <div class="stage-top">
+        <span class="stage-chapter" id="stageChapter">FASE 01 / 07</span>
+        <div class="stage-progress">
+          <span class="stage-progress-label" id="stageProgressLabel">0 de 7 fases concluídas</span>
+          <span class="progress-track"><span class="progress-fill" id="stageProgressFill"></span></span>
+        </div>
+      </div>
+
+      <div class="stage-content" id="stageContent" aria-live="polite">
+        <!-- conteúdo renderizado por js/app.js -->
+      </div>
+
+      <div class="stage-nav">
+        <button class="btn btn-nav" id="prevBtn" type="button">← Fase anterior</button>
+        <button class="btn btn-nav" id="openMapBtn" type="button">✦ Mapa</button>
+        <button class="btn btn-nav btn-nav-next" id="nextBtn" type="button">Próxima fase →</button>
+      </div>
+    </section>
+
+    <!-- COMPARAÇÃO -->
+    <section class="section comparacao" id="comparacao">
+      <div class="section-head">
+        <p class="kicker">A ponte <span class="kicker-dot">✦</span> Biológica × artificial</p>
+        <h2>Duas formas de lembrar</h2>
+        <p class="section-lead">Cérebro e computador fazem coisas parecidas — registram, guardam e recuperam. A grande diferença está no material e no jeito de fazer isso.</p>
+      </div>
+
+      <div class="compare-similar">
+        <article class="compare-pill"><span class="compare-symbol">◎</span><h3>Registram</h3><p><b>Biológica:</b> um estímulo vira sinal nervoso ou químico.<br><b>Artificial:</b> um dado vira bits (0 e 1).</p></article>
+        <article class="compare-pill"><span class="compare-symbol">▤</span><h3>Guardam</h3><p><b>Biológica:</b> conexões entre neurônios e padrões nas células.<br><b>Artificial:</b> memória, discos e nuvem.</p></article>
+        <article class="compare-pill"><span class="compare-symbol">↶</span><h3>Recuperam</h3><p><b>Biológica:</b> uma pista reativa a lembrança.<br><b>Artificial:</b> um endereço localiza o arquivo.</p></article>
+      </div>
+
+      <div class="compare-table" role="table" aria-label="Diferenças entre memória biológica e artificial">
+        <div class="compare-row compare-head" role="row"><span role="columnheader">Aspecto</span><span role="columnheader">Memória biológica</span><span role="columnheader">Memória artificial</span></div>
+        <div class="compare-row" role="row"><span role="cell">Base</span><span role="cell">Células, nervos e substâncias químicas</span><span role="cell">Circuitos elétricos e bits</span></div>
+        <div class="compare-row" role="row"><span role="cell">Velocidade</span><span role="cell">Rápida, mas variável</span><span role="cell">Muito rápida e constante</span></div>
+        <div class="compare-row" role="row"><span role="cell">Durabilidade</span><span role="cell">Pode mudar com o tempo e com emoções</span><span role="cell">Depende do suporte e da energia</span></div>
+        <div class="compare-row" role="row"><span role="cell">Flexibilidade</span><span role="cell">Associa ideias, sentidos e emoções</span><span role="cell">Segue regras e endereços precisos</span></div>
+      </div>
+      <p class="compare-footnote">✧ As duas podem falhar: uma lembrança humana pode esquecer ou mudar; um arquivo pode se corromper. As duas são maneiras extraordinárias de vencer o tempo.</p>
+      <div class="comparacao-cta"><a class="btn btn-gold" href="#conclusao">Ir para a conclusão →</a></div>
+    </section>
+
+    <!-- CONCLUSÃO -->
+    <section class="conclusao" id="conclusao">
+      <div class="conclusao-bg" role="img" aria-label="Horizonte luminoso onde a floresta se transforma em luz digital"></div>
+      <div class="conclusao-veil" aria-hidden="true"></div>
+      <div class="conclusao-inner">
+        <div class="completion-badge" id="completionBadge" hidden>
+          <span class="badge-star">✦</span>
+          <span><b>Jornada concluída!</b> Você percorreu a evolução da memória, da vida aos computadores.</span>
+        </div>
+        <p class="kicker">Última página <span class="kicker-dot">✦</span> O que fica</p>
+        <h2>A memória continua</h2>
+        <blockquote>“Da primeira forma de armazenamento da vida aos sistemas digitais, a memória continua sendo essencial para preservar informações, aprender e transformar o futuro.”</blockquote>
+        <div class="conclusao-actions">
+          <button class="btn btn-gold" id="restartBtn" type="button">Refazer a jornada ↺</button>
+          <a class="btn btn-quiet" href="#inicio">Voltar ao início</a>
+        </div>
+        <p class="conclusao-status" id="conclusaoStatus">Você já pode visitar as sete fases. Responda às perguntas para marcar cada ilha como concluída.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>✦</span>
+    <p>Uma jornada educativa ilustrada · da vida aos computadores</p>
+    <span>✦</span>
+  </footer>
+
+  <!-- MAPA EM JANELA -->
+  <div class="modal" id="mapModal" hidden>
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="closeModalBtn" type="button" aria-label="Fechar mapa">×</button>
+      <p class="kicker">Mapa da jornada</p>
+      <h2 id="modalTitle">Escolha uma ilha</h2>
+      <p class="modal-lead">Você pode visitar qualquer fase livremente.</p>
+      <div class="modal-map" id="modalMap"></div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

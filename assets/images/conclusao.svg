@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Horizonte onde a floresta se transforma em luz digital e um livro brilha ao centro">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="1" y2="0.2">
+      <stop offset="0" stop-color="#2b3218"/><stop offset="0.35" stop-color="#4a5a32"/><stop offset="0.65" stop-color="#24566b"/><stop offset="1" stop-color="#16202a"/>
+    </linearGradient>
+    <radialGradient id="center" cx="50%" cy="52%" r="52%">
+      <stop offset="0" stop-color="#f4d99f" stop-opacity="0.85"/><stop offset="0.3" stop-color="#c98a36" stop-opacity="0.3"/><stop offset="0.65" stop-color="#2f8ea8" stop-opacity="0.16"/><stop offset="1" stop-color="#2f8ea8" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4a5a32"/><stop offset="1" stop-color="#16202a"/>
+    </linearGradient>
+    <linearGradient id="book" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff0c8"/><stop offset="0.5" stop-color="#dfc186"/><stop offset="1" stop-color="#8fb9c9"/>
+    </linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="22"/></filter>
+    <filter id="soft"><feGaussianBlur stdDeviation="6"/></filter>
+    <filter id="pintura">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012 0.024" numOctaves="4" seed="11" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.2"/></feComponentTransfer>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <rect width="1600" height="900" fill="url(#center)"/>
+
+  <!-- raios do livro -->
+  <g fill="#f4d99f" opacity="0.1">
+    <path d="M800 430 L200 0 L620 0Z"/>
+    <path d="M800 430 L1000 0 L1400 0Z"/>
+    <path d="M800 430 L0 300 L0 620Z"/>
+    <path d="M800 430 L1600 260 L1600 600Z"/>
+  </g>
+
+  <!-- floresta à esquerda -->
+  <g fill="#173b29" opacity="0.9">
+    <path d="M0 900 L40 260 Q60 230 80 260 L120 900Z"/>
+    <path d="M140 900 L176 180 Q196 150 218 180 L258 900Z"/>
+    <path d="M300 900 L332 320 Q350 292 370 320 L410 900Z"/>
+    <path d="M450 900 L478 420 Q494 396 512 420 L544 900Z"/>
+  </g>
+  <g fill="#5d6b34" opacity="0.8">
+    <ellipse cx="60" cy="250" rx="170" ry="120"/><ellipse cx="200" cy="190" rx="190" ry="130"/>
+    <ellipse cx="370" cy="320" rx="150" ry="100"/><ellipse cx="500" cy="410" rx="120" ry="80"/>
+  </g>
+  <g fill="#a0a462" opacity="0.35">
+    <ellipse cx="260" cy="140" rx="180" ry="90"/><ellipse cx="450" cy="280" rx="140" ry="80"/>
+  </g>
+
+  <!-- arquitetura de dados à direita -->
+  <g stroke="#2f8ea8" fill="none" opacity="0.45">
+    <path d="M1080 180 H1320 V300 H1500 V160"/>
+    <path d="M1040 380 H1240 V500 H1480 V360"/>
+    <path d="M1100 620 H1340 V740 H1560"/>
+    <path d="M1320 300 V380 M1240 500 V620 M1480 360 V500"/>
+    <path d="M1080 180 L1140 120 M1500 160 L1560 220"/>
+  </g>
+  <g fill="#2f8ea8" opacity="0.85">
+    <circle cx="1320" cy="300" r="7"/><circle cx="1240" cy="500" r="6"/><circle cx="1480" cy="360" r="6"/>
+    <circle cx="1340" cy="620" r="6"/><circle cx="1500" cy="160" r="5"/>
+  </g>
+  <g fill="#2f8ea8" opacity="0.2" filter="url(#soft)">
+    <circle cx="1320" cy="300" r="28"/><circle cx="1240" cy="500" r="26"/><circle cx="1340" cy="620" r="26"/>
+  </g>
+
+  <!-- horizonte -->
+  <path d="M0 720 Q400 690 800 730 Q1200 770 1600 710 L1600 900 L0 900Z" fill="url(#ground)"/>
+  <path d="M0 720 Q400 690 800 730 Q1200 770 1600 710" fill="none" stroke="#c98a36" stroke-width="3" opacity="0.4"/>
+
+  <!-- livro iluminado ao centro -->
+  <g transform="translate(800 480)">
+    <ellipse rx="200" ry="140" fill="#f4d99f" opacity="0.35" filter="url(#glow)"/>
+    <path d="M0 50 Q-90 0 -160 30 L-160 -70 Q-90 -100 0 -45Z" fill="url(#book)" stroke="#c98a36" stroke-width="4"/>
+    <path d="M0 50 Q90 0 160 30 L160 -70 Q90 -100 0 -45Z" fill="url(#book)" stroke="#c98a36" stroke-width="4"/>
+    <path d="M0 -45 V50" stroke="#8a6b48" stroke-width="5"/>
+    <g stroke="#9b855f" stroke-width="2" opacity="0.55">
+      <path d="M-130 -40 Q-70 -60 -30 -30 M-130 -20 Q-70 -40 -30 -10 M-130 0 Q-70 -20 -30 10"/>
+      <path d="M30 -30 Q70 -60 130 -40 M30 -10 Q70 -40 130 -20 M30 10 Q70 -20 130 0"/>
+    </g>
+    <path d="M0 -45 L0 -130 M0 -130 L-22 -158 M0 -130 L22 -158" stroke="#fff0c8" stroke-width="3" fill="none" opacity="0.8"/>
+    <circle cy="-170" r="10" fill="#fff4d4"/>
+  </g>
+
+  <!-- estrelas de dados -->
+  <g fill="#fff0c8">
+    <circle cx="120" cy="120" r="2.6" opacity="0.8"/><circle cx="380" cy="80" r="2" opacity="0.7"/>
+    <circle cx="600" cy="180" r="2.4" opacity="0.75"/><circle cx="1080" cy="100" r="2" opacity="0.7"/>
+    <circle cx="1400" cy="120" r="2.6" opacity="0.8"/><circle cx="1520" cy="260" r="2" opacity="0.6"/>
+    <circle cx="700" cy="620" r="2.2" opacity="0.7"/><circle cx="940" cy="660" r="2.6" opacity="0.75"/>
+    <circle cx="260" cy="560" r="2" opacity="0.6"/><circle cx="1300" cy="600" r="2.4" opacity="0.7"/>
+  </g>
+  <g fill="#f4d99f" opacity="0.22" filter="url(#soft)">
+    <circle cx="600" cy="180" r="16"/><circle cx="1080" cy="100" r="14"/><circle cx="940" cy="660" r="18"/>
+  </g>
+  <rect width="1600" height="900" filter="url(#pintura)" opacity="0.5" style="mix-blend-mode:soft-light"/>
+</svg>

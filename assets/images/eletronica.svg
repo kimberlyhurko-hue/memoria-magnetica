@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placa de circuito com chips e trilhas luminosas azuis">
+  <defs>
+    <linearGradient id="board" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#172F55"/><stop offset="0.55" stop-color="#101C36"/><stop offset="1" stop-color="#0a1428"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="45%" cy="45%" r="60%">
+      <stop offset="0" stop-color="#399BC0" stop-opacity="0.35"/><stop offset="1" stop-color="#399BC0" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="chip" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#235B85"/><stop offset="1" stop-color="#0e2038"/>
+    </linearGradient>
+    <linearGradient id="chipTop" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8ADCF0" stop-opacity="0.35"/><stop offset="1" stop-color="#8ADCF0" stop-opacity="0.08"/>
+    </linearGradient>
+    <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M50 0 H0 V50" fill="none" stroke="#8ADCF0" stroke-width="1" opacity="0.08"/>
+    </pattern>
+    <filter id="soft"><feGaussianBlur stdDeviation="10"/></filter>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#board)"/>
+  <rect width="1600" height="900" fill="url(#grid)"/>
+  <ellipse cx="760" cy="450" rx="620" ry="420" fill="url(#glow)"/>
+
+  <!-- trilhas -->
+  <g fill="none" stroke="#399BC0" stroke-width="5" stroke-linejoin="round" opacity="0.75">
+    <path d="M0 180 H240 V320 H520 V180 H820"/>
+    <path d="M0 420 H180 V560 H460 V760 H760"/>
+    <path d="M1600 140 H1380 V300 H1120 V460 H900"/>
+    <path d="M1600 420 H1440 V620 H1180 V820 H820"/>
+    <path d="M520 320 V560 H760 V700 M1120 300 V120 H900 M1180 620 V460 H1000"/>
+  </g>
+  <g fill="none" stroke="#8ADCF0" stroke-width="1.6" opacity="0.85">
+    <path d="M0 180 H240 V320 H520 V180 H820"/>
+    <path d="M1600 140 H1380 V300 H1120 V460 H900"/>
+    <path d="M460 760 H760 V700"/>
+    <path d="M1180 820 H820"/>
+  </g>
+  <g fill="#8ADCF0">
+    <circle cx="240" cy="320" r="9"/><circle cx="520" cy="180" r="8"/><circle cx="180" cy="560" r="8"/>
+    <circle cx="1380" cy="300" r="9"/><circle cx="1120" cy="460" r="8"/><circle cx="1440" cy="620" r="8"/>
+    <circle cx="760" cy="700" r="9"/><circle cx="1000" cy="460" r="7"/>
+  </g>
+  <g fill="#8ADCF0" opacity="0.25" filter="url(#soft)">
+    <circle cx="240" cy="320" r="34"/><circle cx="1380" cy="300" r="34"/><circle cx="760" cy="700" r="32"/>
+  </g>
+
+  <!-- chip central -->
+  <g transform="translate(620 300)">
+    <rect x="-24" y="0" width="24" height="14"/><rect x="-24" y="30" width="24" height="14"/><rect x="-24" y="60" width="24" height="14"/><rect x="-24" y="90" width="24" height="14"/><rect x="-24" y="120" width="24" height="14"/><rect x="-24" y="150" width="24" height="14"/><rect x="-24" y="180" width="24" height="14"/><rect x="-24" y="210" width="24" height="14"/>
+    <rect x="240" y="0" width="24" height="14"/><rect x="240" y="30" width="24" height="14"/><rect x="240" y="60" width="24" height="14"/><rect x="240" y="90" width="24" height="14"/><rect x="240" y="120" width="24" height="14"/><rect x="240" y="150" width="24" height="14"/><rect x="240" y="180" width="24" height="14"/><rect x="240" y="210" width="24" height="14"/>
+    <rect x="0" y="-24" width="14" height="24"/><rect x="30" y="-24" width="14" height="24"/><rect x="60" y="-24" width="14" height="24"/><rect x="90" y="-24" width="14" height="24"/><rect x="120" y="-24" width="14" height="24"/><rect x="150" y="-24" width="14" height="24"/><rect x="180" y="-24" width="14" height="24"/><rect x="210" y="-24" width="14" height="24"/>
+    <rect x="0" y="224" width="14" height="24"/><rect x="30" y="224" width="14" height="24"/><rect x="60" y="224" width="14" height="24"/><rect x="90" y="224" width="14" height="24"/><rect x="120" y="224" width="14" height="24"/><rect x="150" y="224" width="14" height="24"/><rect x="180" y="224" width="14" height="24"/><rect x="210" y="224" width="14" height="24"/>
+    <rect width="240" height="224" rx="10" fill="url(#chip)" stroke="#8ADCF0" stroke-opacity="0.6" stroke-width="3"/>
+    <rect x="18" y="18" width="204" height="188" rx="6" fill="url(#chipTop)"/>
+    <g fill="none" stroke="#8ADCF0" stroke-opacity="0.45" stroke-width="2">
+      <rect x="46" y="44" width="148" height="60" rx="4"/>
+      <path d="M46 124 H194 M46 144 H160 M46 164 H180"/>
+      <circle cx="120" cy="74" r="18"/>
+    </g>
+  </g>
+
+  <!-- memórias em forma de módulos -->
+  <g transform="translate(1120 600)">
+    <rect x="0" y="0" width="300" height="120" rx="8" fill="url(#chip)" stroke="#399BC0" stroke-width="3" opacity="0.95"/>
+    <g fill="#8ADCF0" opacity="0.8">
+      <rect x="16" y="16" width="52" height="44" rx="4"/><rect x="84" y="16" width="52" height="44" rx="4"/>
+      <rect x="152" y="16" width="52" height="44" rx="4"/><rect x="220" y="16" width="52" height="44" rx="4"/>
+      <rect x="16" y="76" width="52" height="28" rx="4"/><rect x="84" y="76" width="52" height="28" rx="4"/>
+      <rect x="152" y="76" width="52" height="28" rx="4"/><rect x="220" y="76" width="52" height="28" rx="4"/>
+    </g>
+  </g>
+
+  <!-- capacitores -->
+  <g>
+    <circle cx="340" cy="720" r="52" fill="#172F55" stroke="#399BC0" stroke-width="5"/>
+    <circle cx="340" cy="720" r="34" fill="none" stroke="#8ADCF0" stroke-width="2" opacity="0.6"/>
+    <path d="M322 700 V740 M358 700 V740" stroke="#8ADCF0" stroke-width="4"/>
+    <circle cx="1470" cy="200" r="44" fill="#172F55" stroke="#399BC0" stroke-width="5"/>
+    <path d="M1454 182 V218 M1486 182 V218" stroke="#8ADCF0" stroke-width="4"/>
+  </g>
+
+  <g fill="#D9EDF5">
+    <circle cx="480" cy="120" r="2.6" opacity="0.8"/><circle cx="980" cy="180" r="2" opacity="0.7"/>
+    <circle cx="1500" cy="500" r="2.4" opacity="0.8"/><circle cx="220" cy="480" r="2" opacity="0.6"/>
+    <circle cx="900" cy="820" r="2.6" opacity="0.7"/><circle cx="1300" cy="820" r="2" opacity="0.6"/>
+  </g>
+</svg>
