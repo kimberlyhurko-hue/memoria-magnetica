@@ -39,8 +39,8 @@
       pergunta: {
         enunciado: 'Como uma célula “lembra” de um estímulo?',
         opcoes: [
-          { texto: 'Ela escreve anotações no DNA como se fosse um texto.', correta: false },
           { texto: 'Ela reconhece sinais e mantém padrões de resposta.', correta: true },
+          { texto: 'Ela escreve anotações no DNA como se fosse um texto.', correta: false },
           { texto: 'Ela guarda cópias exatas em uma memória RAM.', correta: false }
         ],
         explicacao: 'A célula não escreve nem tem RAM: receptores e vias químicas guardam padrões de reconhecimento e resposta por determinado tempo.'
@@ -68,8 +68,8 @@
         enunciado: 'O que ajuda um animal a voltar para casa?',
         opcoes: [
           { texto: 'Esquecer completamente o caminho.', correta: false },
-          { texto: 'Lembrar rotas e pontos de referência.', correta: true },
-          { texto: 'Criar um mapa novo a cada passo.', correta: false }
+          { texto: 'Criar um mapa novo a cada passo.', correta: false },
+          { texto: 'Lembrar rotas e pontos de referência.', correta: true }
         ],
         explicacao: 'A memória espacial guarda marcos do caminho. Por isso um animal reconhece o lugar onde já esteve.'
       },
@@ -123,8 +123,8 @@
       pergunta: {
         enunciado: 'O que transforma uma lembrança individual em memória coletiva?',
         opcoes: [
-          { texto: 'Guardar tudo apenas na própria cabeça.', correta: false },
           { texto: 'Compartilhar e registrar para outras pessoas.', correta: true },
+          { texto: 'Guardar tudo apenas na própria cabeça.', correta: false },
           { texto: 'Esquecer o passado rapidamente.', correta: false }
         ],
         explicacao: 'Memória coletiva nasce quando a informação é compartilhada e preservada para além de uma única pessoa.'
@@ -152,8 +152,8 @@
         enunciado: 'Qual é um exemplo de memória artificial física?',
         opcoes: [
           { texto: 'Um pensamento guardado apenas na cabeça.', correta: false },
-          { texto: 'Uma inscrição feita em uma tábua de argila.', correta: true },
-          { texto: 'Um som que desaparece no ar.', correta: false }
+          { texto: 'Um som que desaparece no ar.', correta: false },
+          { texto: 'Uma inscrição feita em uma tábua de argila.', correta: true }
         ],
         explicacao: 'Memória artificial física é aquela registrada em um material externo ao corpo, como pedra, argila ou papel.'
       },
@@ -179,8 +179,8 @@
       pergunta: {
         enunciado: 'O que é um bit?',
         opcoes: [
-          { texto: 'Uma unidade de informação que vale 0 ou 1.', correta: true },
           { texto: 'Um tipo de engrenagem de bronze.', correta: false },
+          { texto: 'Uma unidade de informação que vale 0 ou 1.', correta: true },
           { texto: 'Um programa de computador completo.', correta: false }
         ],
         explicacao: 'Bit é a menor unidade de informação digital. Grupos de oito bits formam um byte.'
