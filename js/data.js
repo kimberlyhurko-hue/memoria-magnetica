@@ -123,8 +123,8 @@
       pergunta: {
         enunciado: 'O que transforma uma lembrança individual em memória coletiva?',
         opcoes: [
-          { texto: 'Compartilhar e registrar para outras pessoas.', correta: true },
           { texto: 'Guardar tudo apenas na própria cabeça.', correta: false },
+          { texto: 'Compartilhar e registrar para outras pessoas.', correta: true },
           { texto: 'Esquecer o passado rapidamente.', correta: false }
         ],
         explicacao: 'Memória coletiva nasce quando a informação é compartilhada e preservada para além de uma única pessoa.'
@@ -151,9 +151,9 @@
       pergunta: {
         enunciado: 'Qual é um exemplo de memória artificial física?',
         opcoes: [
+          { texto: 'Uma inscrição feita em uma tábua de argila.', correta: true },
           { texto: 'Um pensamento guardado apenas na cabeça.', correta: false },
-          { texto: 'Um som que desaparece no ar.', correta: false },
-          { texto: 'Uma inscrição feita em uma tábua de argila.', correta: true }
+          { texto: 'Um som que desaparece no ar.', correta: false }
         ],
         explicacao: 'Memória artificial física é aquela registrada em um material externo ao corpo, como pedra, argila ou papel.'
       },
