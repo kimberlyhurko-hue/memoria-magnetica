@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" fill="none">
+  <defs>
+    <linearGradient id="f" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0d2b20"/><stop offset=".55" stop-color="#164a35"/><stop offset="1" stop-color="#0a1f1a"/>
+    </linearGradient>
+    <radialGradient id="l" cx="50%" cy="42%" r="60%">
+      <stop offset="0" stop-color="#a8d98b" stop-opacity=".32"/><stop offset="1" stop-color="#a8d98b" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="folha" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d8e9a6"/><stop offset="1" stop-color="#5a9e63"/>
+    </linearGradient>
+    <filter id="b"><feGaussianBlur stdDeviation="12"/></filter>
+  </defs>
+  <rect width="800" height="520" fill="url(#f)"/>
+  <rect width="800" height="520" fill="url(#l)"/>
+  <g fill="#e9e2ad">
+    <circle cx="88" cy="74" r="2" opacity=".6"/><circle cx="206" cy="124" r="1.6" opacity=".45"/>
+    <circle cx="354" cy="62" r="2.2" opacity=".55"/><circle cx="520" cy="118" r="1.7" opacity=".5"/>
+    <circle cx="690" cy="80" r="2" opacity=".6"/><circle cx="742" cy="212" r="1.6" opacity=".45"/>
+    <circle cx="126" cy="238" r="1.8" opacity=".5"/>
+  </g>
+  <circle cx="596" cy="146" r="86" fill="#e8c46a" opacity=".12" filter="url(#b)"/>
+  <circle cx="596" cy="146" r="52" fill="#e8c46a" opacity=".55"/>
+  <circle cx="596" cy="146" r="66" stroke="#e8c46a" stroke-opacity=".35" stroke-width="2"/>
+
+  <g transform="translate(400 258)" stroke="#cbe8a1" stroke-width="4" stroke-linecap="round" opacity=".85">
+    <path d="M-60-118c0 60 24 108 60 146 36-38 60-86 60-146"/>
+    <path d="M60-118c0 60-24 108-60 146-36-38-60-86-60-146"/>
+    <g stroke-opacity=".5" stroke-width="2.5">
+      <path d="M-56-92h112"/><path d="M-48-62h96"/><path d="M-38-32h76"/><path d="M-24-2h48"/>
+    </g>
+    <g fill="#e0b45f" stroke="none">
+      <circle cx="-44" cy="-92" r="5"/><circle cx="44" cy="-62" r="5"/>
+      <circle cx="-38" cy="-32" r="5"/><circle cx="24" cy="-2" r="5"/>
+    </g>
+  </g>
+
+  <g transform="translate(152 336)">
+    <path d="M0 0c-48-64-32-146 36-196 12 76-2 142-36 196Z" fill="url(#folha)"/>
+    <path d="M0 0c-4-58 6-112 36-196" stroke="#234d34" stroke-width="3" opacity=".55"/>
+  </g>
+  <g transform="translate(646 348) scale(-1 1)">
+    <path d="M0 0c-48-64-32-146 36-196 12 76-2 142-36 196Z" fill="url(#folha)" opacity=".85"/>
+    <path d="M0 0c-4-58 6-112 36-196" stroke="#234d34" stroke-width="3" opacity=".55"/>
+  </g>
+
+  <g stroke="#7ec48f" stroke-opacity=".35" stroke-width="2">
+    <path d="M60 460c84-44 156-44 232-10 70 32 140 30 214-12 52-30 104-34 158-12"/>
+    <path d="M40 486c96-46 176-42 250-8 68 30 136 30 208-8 52-28 104-30 160-8"/>
+  </g>
+  <g transform="translate(400 438)" opacity=".9">
+    <circle r="34" stroke="#d8e9a6" stroke-width="2" stroke-opacity=".7"/>
+    <circle r="17" fill="#a8d98b" opacity=".5"/>
+    <circle cx="-9" cy="-6" r="4" fill="#e8c46a"/><circle cx="11" cy="8" r="3" fill="#cbe8a1"/>
+  </g>
+  <path d="M0 520c40-70 92-104 160-124-16 56-48 100-96 124Z" fill="#0b3023"/>
+  <path d="M800 520c-42-68-94-102-160-122 16 54 46 96 92 122Z" fill="#0b3023"/>
+</svg>

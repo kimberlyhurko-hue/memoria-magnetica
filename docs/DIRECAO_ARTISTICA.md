@@ -4,7 +4,7 @@ Referência visual da reformulação (v2). Este arquivo orienta novas ilustraç�
 
 ## Conceito
 
-**“Um livro que atravessa o tempo, acompanhando a evolução da memória desde as primeiras formas de registro da vida até os sistemas digitais.”**
+**“Um livro que atravessa o tempo, acompanhando a evolução da memória desde as primeiras formas de registro da vida até os sistemas digitais — e que se abre em cinco universos de conhecimento.”**
 
 A experiência parece um livro de fantasia ilustrado e cinematográfico — nunca uma apresentação de slides, um site corporativo ou um jogo genérico. A atmosfera é luminosa, mágica e acolhedora, com textura pictórica suave e detalhes em dourado.
 
@@ -68,6 +68,24 @@ Ilustrações da coleção, todas em `assets/images/tecnologia/`:
 - `tech-robotica.svg` e `tech-robo-partes.svg`: braço mecânico, sensores e robô esquemático com peças numeradas.
 
 Como na jornada, são SVGs autorais e sem texto embutido: rótulos e legendas ficam no HTML, garantindo acessibilidade e manutenção. A trilha de localização aparece no topo em todas as larguras; o indicador de leitura é neutro e não representa pontuação. Detalhes de implementação em `docs/BIBLIOTECA.md`.
+
+## Capa e universos
+
+A camada do atlas abre o site como um livro: capa ilustrada, frase curta e botão **“Entrar na biblioteca”**. A ilustração `capa-conhecimento.svg` mostra um livro aberto e luminoso entre estrelas, folhas, órbitas e trilhas de dados — o encontro entre natureza, conhecimento e invenção que resume a frase-guia do projeto. A abertura é uma rotação suave do livro, com `prefers-reduced-motion` respeitado; nenhum texto fica dentro do SVG.
+
+O seletor apresenta cinco cartões como universos, não como itens de menu administrativo: cada um com atmosfera, ilustração e cor próprias. As páginas de assunto repetem a paleta do universo para manter a sensação de percorrer mundos diferentes.
+
+| Universo | Sensação | Cores principais |
+|---|---|---|
+| Vida e Natureza | floresta, crescimento | `#0D2B20` `#164A35` `#9ED18F` `#E8C46A` |
+| Universo e Descobertas | céu, órbitas, partículas | `#07122B` `#142A57` `#8BC4FF` `#E8C46A` |
+| Humanidade e História | templos, pergaminho, memória | `#2B1D14` `#543923` `#E8C46A` `#D8C49D` |
+| Mente e Conhecimento | ideias, rede neural, livros | `#101D34` `#1D2B4D` `#B6A0FF` `#8B5CFF` |
+| Tecnologia e Futuro | atlas tecnológico | `#050C1D` `#0A1732` `#4DE8FF` `#8B5CFF` |
+
+Ilustrações em `assets/images/atlas/`: `capa-conhecimento.svg`, `vida.svg`, `universo.svg`, `humanidade.svg` e `mente.svg`. Tecnologia e Futuro reutiliza `tech-hero.svg`. Todos os SVGs são autorais e sem texto embutido; rótulos e descrições ficam no HTML por acessibilidade. O estilo vive em `css/atlas.css`, sob `body.atlas-ativa`, e complementa — sem sobrescrever — a identidade de `body.biblioteca-ativa`.
+
+Os quatro universos novos estão em preparação: as páginas mantêm a atmosfera e a navegação, mas exibem explicitamente esse estado em vez de apresentar conteúdo improvisado.
 
 ## Princípios
 

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0b1914">
-  <meta name="description" content="Uma jornada ilustrada pela evolução da memória e uma biblioteca sobre Tecnologia e Futuro: inteligência artificial, evolução da tecnologia e robótica.">
+  <meta name="description" content="Uma capa de livro interativa, cinco universos de conhecimento para explorar livremente e a jornada ilustrada pela evolução da memória.">
   <title>A Evolução da Memória — Uma Jornada Ilustrada</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,6 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/biblioteca.css">
+  <link rel="stylesheet" href="css/atlas.css">
 </head>
 <body>
   <div class="grain" aria-hidden="true"></div>
@@ -19,12 +20,13 @@
   <a class="skip-link" href="#conteudo">Pular para o conteúdo principal</a>
 
   <header class="site-header" id="siteHeader">
-    <a class="brand" href="#inicio" data-nav="inicio" aria-label="Voltar ao início">
+    <a class="brand" href="#inicio" data-nav="inicio" aria-label="A Evolução da Memória — voltar ao início">
       <span class="brand-mark" aria-hidden="true">✦</span>
       <span class="brand-text">A Evolução da Memória</span>
     </a>
     <nav class="site-nav" id="siteNav" aria-label="Navegação principal">
       <a class="nav-biblioteca" href="#/tecnologia" data-nav="biblioteca">Biblioteca</a>
+      <a class="nav-universos" href="#/bibliotecas" data-nav="universos">Universos</a>
       <a href="#prologo" data-nav="prologo">Prólogo</a>
       <a href="#mapa" data-nav="mapa">Mapa</a>
       <a href="#jornada" data-nav="jornada">Jornada</a>
@@ -48,6 +50,23 @@
   </header>
 
   <main id="conteudo">
+    <!-- CAPA PRINCIPAL — porta de entrada da biblioteca interativa -->
+    <section class="capa-principal" id="capa" aria-labelledby="capaTitulo">
+      <div class="capa-fundo" role="img" aria-label="Livro aberto e luminoso entre estrelas, folhas, órbitas e trilhas de dados"></div>
+      <div class="capa-veu" aria-hidden="true"></div>
+      <div class="capa-inner">
+        <div class="capa-livro">
+          <p class="capa-kicker"><span aria-hidden="true">✦</span> Uma biblioteca interativa de conhecimentos <span aria-hidden="true">✦</span></p>
+          <h1 id="capaTitulo">A Evolução<br><span>da Memória</span></h1>
+          <p class="capa-lead">Do primeiro registro da vida às máquinas que aprendem: cinco universos para explorar livremente, como quem abre um grande livro de descobertas.</p>
+          <a class="btn btn-gold capa-entrar" href="#/bibliotecas">Entrar na biblioteca</a>
+          <p class="capa-meta">5 universos &nbsp;·&nbsp; leitura livre &nbsp;·&nbsp; ilustrações autorais</p>
+        </div>
+        <div class="capa-marginalia" aria-hidden="true"><span>✦</span><span>✧</span><span>✦</span></div>
+      </div>
+      <a class="capa-scroll" href="#inicio" aria-label="Ir para a jornada original"><span aria-hidden="true">⌄</span></a>
+    </section>
+
     <!-- ABERTURA -->
     <section class="hero" id="inicio">
       <div class="hero-bg" role="img" aria-label="Floresta antiga que se transforma em um mundo digital luminoso"></div>
@@ -406,6 +425,7 @@
   <script src="js/data.js"></script>
   <script src="js/app.js"></script>
   <script src="js/biblioteca-data.js"></script>
+  <script src="js/atlas-data.js"></script>
   <script src="js/biblioteca.js"></script>
 </body>
 </html>

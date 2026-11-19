@@ -10,6 +10,7 @@
   const COLECOES = (Array.isArray(window.BIBLIOTECA_COLECOES) && window.BIBLIOTECA_COLECOES.length)
     ? window.BIBLIOTECA_COLECOES
     : (window.BIBLIOTECA_DATA ? [window.BIBLIOTECA_DATA] : []);
+  const ATLAS = Array.isArray(window.ATLAS_UNIVERSOS) ? window.ATLAS_UNIVERSOS : [];
   const LETRAS = ['A', 'B', 'C', 'D'];
   const ERAS = {
     pedra: 'Pedra e fogo',
@@ -89,6 +90,14 @@
     return COLECOES.find(function (c) { return c.id === id; }) || null;
   }
 
+  function universoPorId(id) {
+    return ATLAS.find(function (u) { return u.id === id; }) || null;
+  }
+
+  function assuntoPorId(universo, id) {
+    return (universo.assuntos || []).find(function (a) { return a.id === id; }) || null;
+  }
+
   function temaPorId(colecao, id) {
     return (colecao.temas || []).find(function (t) { return t.id === id; }) || null;
   }
@@ -103,8 +112,9 @@
     processarRota();
   }
 
-  function aplicarModoBiblioteca(ativo) {
+  function aplicarModoBiblioteca(ativo, atlas) {
     document.body.classList.toggle('biblioteca-ativa', ativo);
+    document.body.classList.toggle('atlas-ativa', Boolean(ativo && atlas));
     biblioteca.hidden = !ativo;
     secoesOrigem.forEach(function (secao, i) {
       secao.hidden = ativo ? true : estadosOcultacao[i];
@@ -148,10 +158,54 @@
     const colecao = partes.length ? colecaoPorId(partes[0]) : null;
 
     if (!colecao) {
+      /* Seletor dos cinco universos. */
+      if (partes[0] === 'bibliotecas') {
+        if (partes.length > 1) {
+          redirecionar(RAIZ + 'bibliotecas');
+          return;
+        }
+        aplicarModoBiblioteca(true, true);
+        perguntaAtual = null;
+        leituraAtiva = false;
+        renderizarSeletor();
+        finalizarRenderizacao();
+        return;
+      }
+
+      /* Universos novos: páginas de assuntos, sem conteúdo inventado. */
+      const universo = partes.length ? universoPorId(partes[0]) : null;
+      if (universo) {
+        aplicarModoBiblioteca(true, true);
+        perguntaAtual = null;
+        leituraAtiva = false;
+        if (partes.length === 1) {
+          renderizarUniverso(universo);
+        } else {
+          const assunto = assuntoPorId(universo, partes[1]);
+          if (!assunto) {
+            redirecionar(RAIZ + universo.id);
+            return;
+          }
+          if (partes.length === 2) renderizarAssunto(universo, assunto);
+          else redirecionar(RAIZ + universo.id + '/' + assunto.id);
+        }
+        finalizarRenderizacao();
+        return;
+      }
+
       if (rotaAtual) {
         aplicarModoBiblioteca(false);
         rotaAtual = '';
         document.title = TITULO_ORIGINAL;
+        /* As seções originais eram display:none durante a navegação; só agora
+           o alvo da âncora existe para receber o scroll. */
+        const alvo = (location.hash || '').replace(/^#/, '');
+        if (alvo) {
+          window.requestAnimationFrame(function () {
+            const secaoAlvo = document.getElementById(alvo);
+            if (secaoAlvo) secaoAlvo.scrollIntoView({ block: 'start' });
+          });
+        }
       }
       perguntaAtual = null;
       leituraAtiva = false;
@@ -188,6 +242,7 @@
 
   function trilha(colecao, tema, capitulo) {
     const itens = [
+      { href: RAIZ + 'bibliotecas', texto: 'Todas as bibliotecas' },
       { href: '#inicio', texto: 'Biblioteca principal' },
       { href: RAIZ + colecao.id, texto: colecao.titulo, atual: !tema }
     ];
@@ -215,6 +270,125 @@
     const feitos = visitados(colecao.id, tema.id).length;
     const pct = total ? Math.round((feitos / total) * 100) : 0;
     return { total: total, feitos: feitos, pct: pct };
+  }
+
+  /* ---------------- Camada do atlas: capa, universos e assuntos ---------------- */
+
+  function trilhaAtlas(universo, assunto) {
+    const itens = [
+      { href: RAIZ + 'bibliotecas', texto: 'Todas as bibliotecas' },
+      { href: RAIZ + universo.id, texto: universo.titulo, atual: !assunto }
+    ];
+    if (assunto) itens.push({ texto: assunto.titulo, atual: true });
+    return '<nav class="bib-trilha" aria-label="Onde você está">' +
+      '<ol>' + itens.map(function (item) {
+        const conteudo = item.atual
+          ? '<span aria-current="page">' + esc(item.texto) + '</span>'
+          : '<a href="' + esc(item.href) + '">' + esc(item.texto) + '</a>';
+        return '<li>' + conteudo + '</li>';
+      }).join('') + '</ol></nav>';
+  }
+
+  function statusDoUniverso(universo) {
+    return universo.status === 'disponivel' ? 'Aberto para leitura' : 'Em preparação';
+  }
+
+  function renderizarSeletor() {
+    const cartoes = ATLAS.map(function (universo) {
+      return '' +
+        '<a class="atlas-card atlas-card--' + esc(universo.cor) + '" ' +
+        'href="' + esc(universo.rota || RAIZ + universo.id) + '">' +
+        '<span class="atlas-card-imagem"><img src="' + esc(universo.imagem) +
+        '" alt="" loading="lazy"></span>' +
+        '<span class="atlas-card-corpo">' +
+        '<span class="atlas-card-simbolo" aria-hidden="true">' + esc(universo.simbolo) + '</span>' +
+        '<span class="atlas-card-kicker">' + esc(universo.kicker) + '</span>' +
+        '<span class="atlas-card-titulo">' + esc(universo.titulo) + '</span>' +
+        '<span class="atlas-card-descricao">' + esc(universo.descricao) + '</span>' +
+        '<span class="atlas-card-rodape">' +
+        '<span class="atlas-card-status">' + esc(statusDoUniverso(universo)) + '</span>' +
+        '<span class="atlas-card-cta">Entrar <span aria-hidden="true">↗</span></span>' +
+        '</span></span></a>';
+    }).join('');
+
+    biblioteca.innerHTML =
+      '<nav class="bib-trilha" aria-label="Onde você está"><ol><li>' +
+      '<span aria-current="page">Todas as bibliotecas</span></li></ol></nav>' +
+      '<div class="bib-view atlas-view atlas-seletor">' +
+      '<header class="atlas-intro">' +
+      '<p class="bib-kicker">O atlas dos conhecimentos</p>' +
+      '<h1>Escolha seu universo</h1>' +
+      '<p class="bib-lead">Cinco bibliotecas, cada uma com sua própria atmosfera. Entre em qualquer uma, volte quando quiser e mude de caminho sem seguir uma ordem.</p>' +
+      '</header>' +
+      '<section class="atlas-grade" aria-label="Bibliotecas do atlas">' + cartoes + '</section>' +
+      '<div class="bib-retorno-geral">' +
+      '<a class="bib-btn bib-btn-quiet" href="#capa">← Voltar à capa</a>' +
+      '</div></div>';
+  }
+
+  function renderizarUniverso(universo) {
+    const emPreparacao = universo.status !== 'disponivel';
+    const cartoes = (universo.assuntos || []).map(function (assunto, i) {
+      return '' +
+        '<a class="atlas-assunto-card atlas-assunto--' + esc(assunto.id) + '" ' +
+        'href="' + esc(RAIZ + universo.id + '/' + assunto.id) + '">' +
+        '<span class="atlas-assunto-simbolo" aria-hidden="true">' + esc(assunto.simbolo) + '</span>' +
+        '<span class="atlas-assunto-numero">' + dois(i + 1) + '</span>' +
+        '<span class="atlas-assunto-titulo">' + esc(assunto.titulo) + '</span>' +
+        '<span class="atlas-assunto-descricao">' + esc(assunto.descricao) + '</span>' +
+        '<span class="atlas-assunto-cta">Explorar assunto <span aria-hidden="true">↗</span></span>' +
+        '</a>';
+    }).join('');
+
+    biblioteca.innerHTML = trilhaAtlas(universo) +
+      '<div class="bib-view atlas-view atlas-universo atlas-universo--' + esc(universo.cor) + '">' +
+      '<header class="atlas-universo-hero">' +
+      '<div class="atlas-universo-copy">' +
+      '<p class="bib-kicker">' + esc(universo.kicker) + '</p>' +
+      '<h1>' + esc(universo.titulo) + '</h1>' +
+      '<p class="bib-lead">' + esc(universo.intro) + '</p>' +
+      '<p class="atlas-universo-descricao">' + esc(universo.descricao) + '</p>' +
+      '<span class="atlas-selo">' + esc(statusDoUniverso(universo)) + '</span>' +
+      '</div>' +
+      '<figure class="atlas-universo-arte">' +
+      '<img src="' + esc(universo.imagem) + '" alt="Ambientação ilustrada de ' + esc(universo.titulo) + '">' +
+      '</figure></header>' +
+      '<section class="atlas-assuntos" aria-labelledby="atlasAssuntosTitulo">' +
+      '<div class="bib-secao-titulo">' +
+      '<p class="bib-kicker">Escolha um caminho</p>' +
+      '<h2 id="atlasAssuntosTitulo">Assuntos deste universo</h2>' +
+      '<p>' + (emPreparacao
+        ? 'Os assuntos já estão organizados. Os textos, ilustrações e atividades de leitura estão sendo preparados — você pode voltar e explorar outro universo a qualquer momento.'
+        : 'Cada assunto abre um roteiro de capítulos com ilustrações e verificação de leitura.') + '</p>' +
+      '</div>' +
+      '<div class="atlas-assuntos-grid">' + cartoes + '</div></section>' +
+      '<div class="bib-retorno-geral">' +
+      '<a class="bib-btn bib-btn-quiet" href="' + esc(RAIZ + 'bibliotecas') + '">← Todas as bibliotecas</a>' +
+      '<a class="bib-btn bib-btn-quiet" href="#capa">Voltar à capa</a>' +
+      '</div></div>';
+  }
+
+  function renderizarAssunto(universo, assunto) {
+    biblioteca.innerHTML = trilhaAtlas(universo, assunto) +
+      '<div class="bib-view atlas-view atlas-assunto atlas-universo--' + esc(universo.cor) + '">' +
+      '<header class="atlas-assunto-hero">' +
+      '<span class="atlas-assunto-simbolo-grande" aria-hidden="true">' + esc(assunto.simbolo) + '</span>' +
+      '<p class="bib-kicker">' + esc(universo.titulo) + ' · assunto ' + esc(assunto.titulo) + '</p>' +
+      '<h1>' + esc(assunto.titulo) + '</h1>' +
+      '<p class="bib-lead">' + esc(assunto.descricao) + '</p>' +
+      '</header>' +
+      '<section class="atlas-preparacao" aria-labelledby="atlasPreparacaoTitulo">' +
+      '<div class="atlas-preparacao-arte" aria-hidden="true"><img src="' + esc(universo.imagem) + '" alt=""></div>' +
+      '<div class="atlas-preparacao-copy">' +
+      '<p class="bib-kicker">Caminho em preparação</p>' +
+      '<h2 id="atlasPreparacaoTitulo">Este assunto ainda vai ganhar sua leitura</h2>' +
+      '<p>A estrutura de navegação já está pronta. Os capítulos, as ilustrações e os recursos interativos deste assunto serão acrescentados em seguida — sem pressa e sem conteúdo improvisado.</p>' +
+      '</div></section>' +
+      '<div class="bib-retorno-geral">' +
+      '<a class="bib-btn bib-btn-quiet" href="' + esc(RAIZ + universo.id) + '">← Voltar a ' + esc(universo.titulo) + '</a>' +
+      '<a class="bib-btn bib-btn-quiet" href="' + esc(RAIZ + 'bibliotecas') + '">Todas as bibliotecas</a>' +
+      '<a class="bib-btn bib-btn-quiet" href="#capa">Voltar à capa</a>' +
+      '</div></div>';
   }
 
   function renderizarCategoria(colecao) {
