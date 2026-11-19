@@ -1,0 +1,512 @@
+/* ============================================================
+   Biblioteca interativa — Tecnologia e Futuro
+   Camada visual escopalada: não altera a jornada original.
+   ============================================================ */
+
+body.biblioteca-ativa {
+  --bib-bg: #050c1d;
+  --bib-bg-2: #0a1732;
+  --bib-texto: #eaf3ff;
+  --bib-suave: #a6b9d8;
+  --bib-ciano: #4de8ff;
+  --bib-azul: #2f6df6;
+  --bib-roxo: #8b5cff;
+  --bib-ouro: #e8c46a;
+  --bib-linha: rgba(128, 180, 255, .18);
+  --bib-painel: rgba(10, 27, 58, .68);
+  background:
+    radial-gradient(ellipse at 8% 2%, rgba(23, 92, 180, .24), transparent 44%),
+    radial-gradient(ellipse at 94% 14%, rgba(101, 63, 190, .22), transparent 42%),
+    radial-gradient(ellipse at 50% 100%, rgba(17, 65, 120, .2), transparent 50%),
+    linear-gradient(180deg, var(--bib-bg), #07112a 52%, #040a19);
+}
+body.biblioteca-ativa .particles { display: none; }
+body.biblioteca-ativa .grain { opacity: .05; }
+
+body.biblioteca-ativa .site-header {
+  background: rgba(4, 10, 26, .93);
+  border-bottom-color: rgba(77, 232, 255, .24);
+  box-shadow: 0 14px 46px rgba(0, 0, 0, .42);
+}
+body.biblioteca-ativa .brand-mark,
+body.biblioteca-ativa .site-nav a:hover,
+body.biblioteca-ativa .site-nav a.ativo {
+  color: var(--bib-ciano);
+}
+body.biblioteca-ativa .site-nav a:hover::after,
+body.biblioteca-ativa .site-nav a.ativo::after { background: var(--bib-ciano); }
+body.biblioteca-ativa .site-nav .nav-biblioteca { color: var(--bib-ciano); }
+body.biblioteca-ativa .header-progress,
+body.biblioteca-ativa #soundToggle { display: none; }
+body.biblioteca-ativa .site-footer {
+  background: #040b1c;
+  border-top-color: rgba(77, 232, 255, .16);
+  color: var(--bib-suave);
+}
+body.biblioteca-ativa .site-footer span { color: var(--bib-ouro); }
+
+#biblioteca { position: relative; min-height: calc(100vh - 66px); color: var(--bib-texto); }
+#biblioteca[hidden] { display: none !important; }
+#biblioteca::before {
+  content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    linear-gradient(rgba(77, 232, 255, .035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(77, 232, 255, .035) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, .8), transparent 70%);
+  -webkit-mask-image: linear-gradient(180deg, rgba(0, 0, 0, .8), transparent 70%);
+}
+
+.bib-view { position: relative; z-index: 1; max-width: 1180px; margin: 0 auto; padding: 26px 24px 76px; }
+
+/* ---------- Navegação de localização ---------- */
+.bib-trilha {
+  position: relative; z-index: 2;
+  border-bottom: 1px solid var(--bib-linha);
+  background: rgba(4, 12, 30, .72);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+}
+.bib-trilha ol {
+  max-width: 1180px; margin: 0 auto; padding: 11px 24px;
+  display: flex; align-items: center; flex-wrap: wrap; gap: 6px;
+  list-style: none; font-size: .76rem; letter-spacing: .02em;
+}
+.bib-trilha li { display: flex; align-items: center; gap: 6px; }
+.bib-trilha li + li::before { content: '›'; color: rgba(166, 185, 216, .5); }
+.bib-trilha a { color: var(--bib-suave); text-decoration: none; }
+.bib-trilha a:hover { color: var(--bib-ciano); }
+.bib-trilha [aria-current="page"] { color: var(--bib-ouro); font-weight: 600; }
+
+/* ---------- Tipografia e botões ---------- */
+.bib-kicker {
+  margin: 0 0 12px; font-family: var(--display);
+  font-size: .68rem; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--bib-ciano);
+}
+.bib-lead { margin: 0; color: #d8e8ff; font-size: clamp(1rem, 1.45vw, 1.16rem); line-height: 1.65; }
+.bib-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 44px; padding: 12px 20px; border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, .18);
+  font-family: var(--sans); font-size: .86rem; font-weight: 600;
+  text-decoration: none; cursor: pointer;
+  transition: transform .22s ease, border-color .22s ease, background .22s ease, box-shadow .22s ease;
+}
+.bib-btn:hover { transform: translateY(-2px); }
+.bib-btn-principal {
+  background: linear-gradient(115deg, var(--tema-cor, var(--bib-ciano)), var(--bib-azul));
+  color: #041326; border-color: transparent;
+  box-shadow: 0 12px 30px rgba(47, 109, 246, .28);
+}
+.bib-btn-quiet { background: rgba(255, 255, 255, .05); color: var(--bib-texto); border-color: var(--bib-linha); }
+.bib-btn-quiet:hover { background: rgba(255, 255, 255, .11); border-color: rgba(77, 232, 255, .42); }
+.bib-btn.is-bloqueado { opacity: .42; cursor: default; }
+.bib-btn.is-bloqueado:hover { transform: none; }
+
+/* ---------- Identidades por tema ---------- */
+.bib-tema--ia {
+  --tema-cor: #4de8ff;
+  --tema-fundo: rgba(7, 43, 88, .76);
+  --tema-brilho: rgba(77, 232, 255, .22);
+}
+.bib-tema--evolucao {
+  --tema-cor: #e8c46a;
+  --tema-fundo: rgba(52, 36, 24, .72);
+  --tema-brilho: rgba(232, 196, 106, .2);
+}
+.bib-tema--robotica {
+  --tema-cor: #a78bfa;
+  --tema-fundo: rgba(36, 24, 74, .76);
+  --tema-brilho: rgba(167, 139, 250, .24);
+}
+
+/* ---------- Página da categoria ---------- */
+.bib-category-hero {
+  display: grid; grid-template-columns: 1.05fr .95fr; gap: 38px;
+  align-items: center; padding: 46px 0 34px;
+}
+.bib-hero-copy h1 {
+  margin: 0 0 18px; font-family: var(--display); font-weight: 700;
+  font-size: clamp(2.35rem, 5vw, 4.35rem); line-height: 1.03; letter-spacing: -.015em;
+  background: linear-gradient(100deg, #eaf5ff 5%, #68d9ff 48%, #a78bfa 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.bib-hero-descricao { margin: 18px 0 0; color: var(--bib-suave); line-height: 1.7; }
+.bib-hero-fatos { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 24px; }
+.bib-hero-fatos span {
+  padding: 7px 13px; border-radius: 999px; font-size: .73rem;
+  color: var(--bib-ouro); border: 1px solid rgba(232, 196, 106, .34);
+  background: rgba(232, 196, 106, .07);
+}
+.bib-hero-arte {
+  position: relative; margin: 0; min-height: 380px; overflow: hidden;
+  border-radius: 28px; border: 1px solid rgba(77, 232, 255, .3);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, .5), 0 0 50px rgba(47, 109, 246, .14);
+}
+.bib-hero-arte img { width: 100%; height: 100%; min-height: 380px; object-fit: cover; }
+.bib-hero-arte::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(180deg, transparent 55%, rgba(4, 11, 28, .6));
+}
+
+.bib-secao-temas { padding: 30px 0 22px; }
+.bib-secao-titulo { max-width: 700px; margin-bottom: 28px; }
+.bib-secao-titulo h2 {
+  margin: 0 0 10px; font-family: var(--serif); font-weight: 700;
+  font-size: clamp(1.8rem, 3vw, 2.6rem); line-height: 1.12;
+}
+.bib-secao-titulo p:last-child { margin: 0; color: var(--bib-suave); font-size: .92rem; }
+
+.bib-tema-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.bib-tema-card {
+  position: relative; display: flex; flex-direction: column; overflow: hidden;
+  min-height: 470px; border-radius: 24px; text-decoration: none; color: inherit;
+  border: 1px solid var(--bib-linha);
+  background: linear-gradient(160deg, var(--tema-fundo), rgba(5, 12, 30, .92));
+  transition: transform .28s ease, border-color .28s ease, box-shadow .28s ease;
+}
+.bib-tema-card::before {
+  content: ''; position: absolute; inset: -40% 40% 45% -40%; pointer-events: none;
+  background: radial-gradient(circle, var(--tema-brilho), transparent 70%);
+}
+.bib-tema-card:hover {
+  transform: translateY(-6px); border-color: var(--tema-cor);
+  box-shadow: 0 26px 70px rgba(0, 0, 0, .5), 0 0 34px var(--tema-brilho);
+}
+.bib-tema-numero {
+  position: absolute; top: 16px; left: 18px; z-index: 2;
+  font-family: var(--display); font-size: .72rem; letter-spacing: .16em;
+  color: #041326; background: var(--tema-cor); border-radius: 999px; padding: 5px 11px;
+}
+.bib-tema-imagem { display: block; height: 196px; overflow: hidden; }
+.bib-tema-imagem img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+.bib-tema-card:hover .bib-tema-imagem img { transform: scale(1.05); }
+.bib-tema-corpo {
+  position: relative; display: flex; flex-direction: column; flex: 1;
+  padding: 22px 22px 20px;
+}
+.bib-tema-sub {
+  font-size: .66rem; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--tema-cor); margin-bottom: 8px;
+}
+.bib-tema-titulo {
+  font-family: var(--serif); font-weight: 700; font-size: 1.62rem; line-height: 1.15;
+  margin-bottom: 10px;
+}
+.bib-tema-resumo { color: var(--bib-suave); font-size: .88rem; line-height: 1.55; }
+.bib-tema-rodape {
+  display: flex; align-items: flex-end; justify-content: space-between; gap: 12px;
+  margin-top: auto; padding-top: 20px;
+}
+.bib-tema-duracao { font-size: .68rem; color: rgba(166, 185, 216, .78); }
+.bib-explorar {
+  color: var(--tema-cor); font-size: .8rem; font-weight: 700; white-space: nowrap;
+}
+.bib-retorno-geral {
+  display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between;
+  margin-top: 34px; padding-top: 24px; border-top: 1px solid var(--bib-linha);
+}
+
+/* ---------- Página do tema ---------- */
+.bib-tema-hero {
+  display: grid; grid-template-columns: 1.08fr .92fr; gap: 32px;
+  align-items: center; padding: 44px 0 30px;
+}
+.bib-tema-hero h1 {
+  margin: 0 0 8px; font-family: var(--display); font-weight: 700;
+  font-size: clamp(2.15rem, 4.4vw, 3.75rem); line-height: 1.06;
+}
+.bib-tema-subtitulo-grande {
+  margin: 0 0 18px; font-family: var(--serif); font-style: italic;
+  font-size: 1.18rem; color: var(--tema-cor);
+}
+.bib-progresso-leve { margin-top: 24px; max-width: 420px; }
+.bib-progresso-leve > span:first-child { font-size: .76rem; color: var(--bib-suave); }
+.bib-track {
+  display: block; height: 5px; margin-top: 8px; overflow: hidden;
+  border-radius: 99px; background: rgba(255, 255, 255, .1);
+}
+.bib-track span {
+  display: block; height: 100%; border-radius: 99px;
+  background: linear-gradient(90deg, var(--tema-cor), var(--bib-ouro));
+  box-shadow: 0 0 12px var(--tema-brilho);
+}
+.bib-tema-hero-arte { margin: 0; }
+.bib-tema-hero-arte img {
+  width: 100%; max-height: 360px; object-fit: cover;
+  border-radius: 24px; border: 1px solid var(--bib-linha);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .42);
+}
+
+.bib-capitulos { padding: 26px 0 20px; }
+.bib-cap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.bib-cap-card {
+  display: flex; gap: 16px; min-height: 198px; padding: 22px;
+  border-radius: 20px; color: inherit; text-decoration: none;
+  border: 1px solid var(--bib-linha);
+  background: linear-gradient(155deg, rgba(12, 31, 65, .76), rgba(5, 13, 32, .82));
+  transition: transform .24s ease, border-color .24s ease, background .24s ease;
+}
+.bib-cap-card:hover {
+  transform: translateY(-4px); border-color: var(--tema-cor);
+  background: linear-gradient(155deg, var(--tema-fundo), rgba(5, 13, 32, .9));
+}
+.bib-cap-card.is-visitado { border-color: rgba(77, 232, 255, .42); }
+.bib-cap-numero {
+  flex: 0 0 auto; font-family: var(--display); font-size: 1.35rem;
+  color: var(--tema-cor); line-height: 1.1;
+}
+.bib-cap-kicker {
+  display: block; font-size: .63rem; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--bib-ouro); margin-bottom: 6px;
+}
+.bib-cap-titulo {
+  display: block; font-family: var(--serif); font-weight: 700;
+  font-size: 1.2rem; line-height: 1.2; margin-bottom: 8px;
+}
+.bib-cap-intro { display: block; color: var(--bib-suave); font-size: .83rem; line-height: 1.5; }
+.bib-cap-cta {
+  display: inline-block; margin-top: 14px; color: var(--tema-cor);
+  font-size: .78rem; font-weight: 700;
+}
+
+/* Evolução da Tecnologia: roteiro em linha do tempo */
+.bib-capitulos-linha .bib-cap-grid {
+  display: flex; gap: 16px; overflow-x: auto; padding: 40px 4px 18px;
+  scroll-snap-type: x proximity; scrollbar-color: rgba(232, 196, 106, .45) transparent;
+  background-image: linear-gradient(90deg, #e8c46a, #9aa7c9 52%, #4de8ff);
+  background-size: 100% 2px; background-position: 0 28px; background-repeat: no-repeat;
+}
+.bib-capitulos-linha .bib-cap-card { flex: 0 0 254px; scroll-snap-align: start; }
+.bib-cap-card[data-era="pedra"] { --era: #d5a45c; }
+.bib-cap-card[data-era="papel"] { --era: #e8d6a8; }
+.bib-cap-card[data-era="mecanica"] { --era: #c98a56; }
+.bib-cap-card[data-era="eletronica"] { --era: #6ab7d8; }
+.bib-cap-card[data-era="digital"] { --era: #4de8ff; }
+.bib-cap-card[data-era="futuro"] { --era: #a78bfa; }
+.bib-cap-card[data-era] .bib-cap-numero {
+  position: relative; z-index: 1; display: grid; place-items: center;
+  width: 48px; height: 48px; border-radius: 50%;
+  border: 1px solid var(--era); background: #07142c; color: var(--era);
+  font-size: .84rem; box-shadow: 0 0 0 5px rgba(5, 12, 30, .9);
+}
+
+/* ---------- Página do capítulo ---------- */
+.bib-leitura-rail {
+  position: sticky; top: 66px; z-index: 6; height: 3px;
+  background: rgba(255, 255, 255, .06);
+}
+.bib-leitura-rail span {
+  display: block; height: 100%; width: 0;
+  background: linear-gradient(90deg, var(--tema-cor), var(--bib-ouro));
+  box-shadow: 0 0 14px var(--tema-brilho);
+  transition: width .12s linear;
+}
+.bib-capitulo[data-era="pedra"] { --tema-cor: #d5a45c; --tema-brilho: rgba(213, 164, 92, .24); }
+.bib-capitulo[data-era="papel"] { --tema-cor: #e8d6a8; --tema-brilho: rgba(232, 214, 168, .2); }
+.bib-capitulo[data-era="mecanica"] { --tema-cor: #d39a60; --tema-brilho: rgba(211, 154, 96, .22); }
+.bib-capitulo[data-era="eletronica"] { --tema-cor: #6ab7d8; --tema-brilho: rgba(106, 183, 216, .22); }
+.bib-capitulo[data-era="digital"] { --tema-cor: #4de8ff; --tema-brilho: rgba(77, 232, 255, .24); }
+.bib-capitulo[data-era="futuro"] { --tema-cor: #a78bfa; --tema-brilho: rgba(167, 139, 250, .26); }
+
+.bib-cap-header { max-width: 900px; padding: 40px 0 24px; }
+.bib-cap-header h1 {
+  margin: 0 0 16px; font-family: var(--display); font-weight: 700;
+  font-size: clamp(2rem, 4.2vw, 3.55rem); line-height: 1.08;
+}
+.bib-linha-capitulos {
+  display: flex; flex-wrap: wrap; gap: 10px 8px; list-style: none;
+  margin: 26px 0 14px; padding: 0;
+}
+.bib-linha-capitulos li { position: relative; }
+.bib-linha-capitulos a {
+  display: grid; place-items: center; width: 42px; height: 42px;
+  border-radius: 50%; border: 1px solid var(--bib-linha);
+  color: var(--bib-suave); text-decoration: none; font-size: .73rem;
+  font-family: var(--display); transition: all .2s ease;
+}
+.bib-linha-capitulos a:hover { border-color: var(--tema-cor); color: var(--tema-cor); }
+.bib-linha-capitulos .is-visitado a { border-color: var(--tema-cor); color: var(--tema-cor); }
+.bib-linha-capitulos .is-atual a {
+  background: var(--tema-cor); border-color: var(--tema-cor); color: #05122a;
+  box-shadow: 0 0 18px var(--tema-brilho);
+}
+.bib-capitulo .bib-linha-capitulos li[data-era] { padding-bottom: 18px; }
+.bib-capitulo .bib-linha-capitulos li.is-atual[data-era]::after {
+  content: attr(data-era-label); position: absolute; left: 50%; top: 48px;
+  transform: translateX(-50%); white-space: nowrap;
+  font-size: .52rem; color: rgba(166, 185, 216, .75); letter-spacing: .04em;
+}
+.bib-cap-progresso { margin: 0; font-size: .76rem; color: var(--bib-suave); }
+
+.bib-cap-imagem { margin: 0 0 32px; }
+.bib-cap-imagem img {
+  width: 100%; max-height: 420px; object-fit: cover;
+  border-radius: 24px; border: 1px solid var(--bib-linha);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, .44);
+}
+.bib-cap-imagem figcaption {
+  margin-top: 10px; font-size: .72rem; color: rgba(166, 185, 216, .7); text-align: right;
+}
+
+.bib-cap-layout {
+  display: grid; grid-template-columns: minmax(0, 1fr) 270px;
+  gap: 28px; align-items: start;
+}
+.bib-conteudo-principal { min-width: 0; }
+.bib-blocos { display: grid; gap: 16px; }
+.bib-bloco {
+  display: flex; gap: 18px; padding: 22px;
+  border-radius: 18px; border: 1px solid var(--bib-linha);
+  background: linear-gradient(150deg, rgba(12, 31, 65, .72), rgba(5, 13, 32, .66));
+}
+.bib-bloco-marcador {
+  flex: 0 0 auto; display: grid; place-items: center; width: 34px; height: 34px;
+  border-radius: 50%; font-family: var(--display); font-size: .7rem;
+  color: var(--tema-cor); border: 1px solid var(--tema-cor);
+  background: rgba(5, 13, 32, .8);
+}
+.bib-bloco h3 {
+  margin: 0 0 8px; font-family: var(--serif); font-weight: 700;
+  font-size: 1.3rem; line-height: 1.2;
+}
+.bib-bloco p { margin: 0; color: #c2d3ee; line-height: 1.68; font-size: .94rem; }
+
+.bib-painel {
+  margin-top: 22px; padding: 24px; border-radius: 20px;
+  border: 1px solid var(--bib-linha); background: rgba(8, 21, 47, .62);
+}
+.bib-painel h2 {
+  margin: 0 0 16px; font-family: var(--serif); font-size: 1.5rem;
+}
+.bib-componentes ol {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px 18px;
+  margin: 0; padding: 0; list-style: none;
+}
+.bib-componentes li { display: flex; gap: 10px; font-size: .86rem; color: var(--bib-suave); line-height: 1.5; }
+.bib-componentes li b { color: var(--bib-texto); }
+.bib-componente-numero {
+  flex: 0 0 auto; display: grid; place-items: center; width: 24px; height: 24px;
+  border-radius: 50%; background: var(--bib-ouro); color: #08152b;
+  font-weight: 700; font-size: .72rem;
+}
+.bib-diagrama {
+  margin: 22px 0; padding: 16px; border-radius: 20px;
+  border: 1px solid rgba(77, 232, 255, .24); background: rgba(4, 12, 30, .6);
+}
+.bib-diagrama img { width: 100%; border-radius: 12px; }
+.bib-diagrama figcaption { margin-top: 10px; font-size: .74rem; color: var(--bib-suave); text-align: center; }
+.bib-destaque, .bib-curiosidade {
+  margin-top: 22px; padding: 22px 24px; border-radius: 18px;
+}
+.bib-destaque {
+  border-left: 3px solid var(--bib-ouro);
+  background: linear-gradient(100deg, rgba(232, 196, 106, .13), rgba(8, 21, 47, .5));
+}
+.bib-curiosidade {
+  border-left: 3px solid var(--bib-roxo);
+  background: linear-gradient(100deg, rgba(139, 92, 255, .15), rgba(8, 21, 47, .5));
+}
+.bib-destaque p:last-child, .bib-curiosidade p:last-child { margin: 0; line-height: 1.65; }
+.bib-vocabulario dl {
+  display: grid; grid-template-columns: minmax(120px, .4fr) 1fr; gap: 8px 18px;
+  margin: 0; font-size: .88rem;
+}
+.bib-vocabulario dt { color: var(--tema-cor); font-weight: 700; }
+.bib-vocabulario dd { margin: 0; color: var(--bib-suave); }
+
+.bib-lateral { position: sticky; top: 92px; }
+.bib-lateral-cartao {
+  padding: 22px; border-radius: 20px;
+  border: 1px solid var(--bib-linha);
+  background: linear-gradient(160deg, rgba(12, 31, 65, .8), rgba(5, 13, 32, .84));
+}
+.bib-lateral-cartao ol { margin: 0 0 18px; padding-left: 20px; color: var(--bib-suave); font-size: .82rem; line-height: 1.7; }
+.bib-lateral-cartao a { color: var(--tema-cor); font-size: .78rem; font-weight: 700; text-decoration: none; }
+
+/* ---------- Pergunta de revisão ---------- */
+.bib-pergunta {
+  margin-top: 28px; padding: clamp(22px, 3vw, 32px);
+  border-radius: 22px; border: 1px solid rgba(77, 232, 255, .36);
+  background: linear-gradient(150deg, rgba(10, 42, 82, .8), rgba(6, 15, 36, .9));
+  box-shadow: 0 18px 50px rgba(0, 0, 0, .28);
+}
+.bib-pergunta h2 {
+  margin: 0 0 8px; font-family: var(--serif); font-weight: 700;
+  font-size: clamp(1.35rem, 2.4vw, 1.85rem); line-height: 1.25;
+}
+.bib-pergunta-ajuda { margin: 0 0 20px; font-size: .8rem; color: var(--bib-suave); }
+.bib-opcoes { display: grid; gap: 10px; }
+.bib-opcao {
+  display: flex; align-items: flex-start; gap: 14px; width: 100%;
+  padding: 14px 16px; border-radius: 14px;
+  border: 1px solid var(--bib-linha); background: rgba(255, 255, 255, .035);
+  color: var(--bib-texto); text-align: left; cursor: pointer;
+  font-family: var(--sans); font-size: .9rem; line-height: 1.5;
+  transition: border-color .2s ease, background .2s ease, transform .2s ease;
+}
+.bib-opcao:hover:not(:disabled) {
+  border-color: var(--bib-ciano); background: rgba(77, 232, 255, .09); transform: translateX(3px);
+}
+.bib-opcao:disabled { cursor: default; opacity: 1; }
+.bib-opcao-letra {
+  flex: 0 0 auto; display: grid; place-items: center; width: 28px; height: 28px;
+  border-radius: 8px; background: rgba(77, 232, 255, .12); color: var(--bib-ciano);
+  font-family: var(--display); font-size: .72rem; font-weight: 700;
+}
+.bib-opcao.is-correta { border-color: #61e3a2; background: rgba(61, 190, 128, .16); }
+.bib-opcao.is-incorreta { border-color: #ff9a88; background: rgba(220, 100, 88, .16); }
+.bib-opcao.is-resposta:not(.is-correta) { box-shadow: inset 0 0 0 1px rgba(97, 227, 162, .8); }
+.bib-opcao.is-correta .bib-opcao-letra { background: #61e3a2; color: #062018; }
+.bib-opcao.is-incorreta .bib-opcao-letra { background: #ff9a88; color: #2a0d0a; }
+.bib-feedback {
+  margin-top: 18px; padding: 18px 20px; border-radius: 14px;
+  border-left: 3px solid var(--bib-ciano); background: rgba(77, 232, 255, .08);
+  font-size: .88rem; line-height: 1.6;
+}
+.bib-feedback.is-correta { border-left-color: #61e3a2; background: rgba(61, 190, 128, .1); }
+.bib-feedback.is-revisao { border-left-color: var(--bib-ouro); background: rgba(232, 196, 106, .09); }
+.bib-feedback p { margin: 5px 0; }
+.bib-feedback p:first-child { margin-top: 0; }
+.bib-feedback p:last-child { margin-bottom: 0; }
+.bib-feedback-titulo { font-family: var(--serif); font-size: 1.12rem; font-weight: 700; }
+
+.bib-nav-capitulo {
+  display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between;
+  margin-top: 30px; padding-top: 24px; border-top: 1px solid var(--bib-linha);
+}
+
+/* ---------- Responsividade ---------- */
+@media (max-width: 980px) {
+  .bib-category-hero, .bib-tema-hero, .bib-cap-layout { grid-template-columns: 1fr; }
+  .bib-hero-arte, .bib-hero-arte img { min-height: 300px; }
+  .bib-tema-grid, .bib-cap-grid { grid-template-columns: repeat(2, 1fr); }
+  .bib-lateral { position: static; }
+  .bib-tema-hero-arte img { max-height: 300px; }
+}
+@media (max-width: 680px) {
+  .bib-view { padding: 18px 14px 56px; }
+  .bib-trilha ol { padding: 10px 14px; font-size: .7rem; }
+  .bib-category-hero, .bib-tema-hero { padding-top: 30px; gap: 24px; }
+  .bib-hero-arte, .bib-hero-arte img { min-height: 230px; border-radius: 20px; }
+  .bib-tema-grid, .bib-cap-grid { grid-template-columns: 1fr; }
+  .bib-tema-card { min-height: 0; }
+  .bib-tema-imagem { height: 170px; }
+  .bib-cap-card { min-height: 0; }
+  .bib-capitulos-linha .bib-cap-grid { padding-left: 2px; padding-right: 2px; }
+  .bib-capitulos-linha .bib-cap-card { flex-basis: 236px; }
+  .bib-cap-header { padding-top: 28px; }
+  .bib-cap-imagem img { max-height: 280px; border-radius: 18px; }
+  .bib-bloco { padding: 18px; gap: 13px; }
+  .bib-componentes ol { grid-template-columns: 1fr; }
+  .bib-vocabulario dl { grid-template-columns: 1fr; gap: 3px; }
+  .bib-vocabulario dd { margin-bottom: 10px; }
+  .bib-nav-capitulo .bib-btn { flex: 1 1 100%; }
+  .bib-retorno-geral .bib-btn { flex: 1 1 100%; }
+  .bib-leitura-rail { top: 60px; }
+}
+@media (max-width: 380px) {
+  .bib-hero-copy h1 { font-size: 2rem; }
+  .bib-tema-titulo { font-size: 1.4rem; }
+  .bib-opcao { padding: 12px; gap: 10px; font-size: .84rem; }
+}

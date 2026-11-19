@@ -47,6 +47,28 @@ Todos são SVGs autorais e leves, nítidos em qualquer resolução, sem textos e
 - Modais para mapa ampliado, revisão de respostas, compartilhamento, certificado e confirmação de reinício. Foco preso, fundo inerte e `Esc` para fechar.
 - Animações discretas e contínuas; `prefers-reduced-motion` respeitado. Sem bibliotecas externas.
 
+## Biblioteca Tecnologia e Futuro
+
+A coleção acrescentada mantém a mesma premissa de “universo do conhecimento”, mas troca o pergaminho por um atlas tecnológico: fundo azul-marinho profundo, azul elétrico, ciano luminoso e violeta, com pequenos detalhes brancos e dourados. A atmosfera é de descoberta e imaginação — nunca de painel corporativo, dashboard ou jogo competitivo.
+
+| Tema | Sensação | Cores principais |
+|---|---|---|
+| Inteligência Artificial | rede, dados, luz fria | `#061B3C` `#2EE6FF` `#7C6CFF` `#E8C46A` |
+| Evolução da Tecnologia | do fogo ao digital | `#3C2E1E` `#D5A45C` `#172548` `#4DE8FF` |
+| Robótica | laboratório de engenharia | `#050B23` `#4DE8FF` `#8B5CFF` `#DBE6F7` |
+
+Essa identidade vive em `css/biblioteca.css`, sob `body.biblioteca-ativa`. Ela muda cabeçalho, rodapé, fundo e componentes da biblioteca sem sobrescrever a jornada original. Cada tema recebe `--tema-cor`, `--tema-fundo` e `--tema-brilho` próprios; os capítulos da evolução também recebem cor por era (`pedra`, `papel`, `mecanica`, `eletronica`, `digital`, `futuro`), tornando a passagem do tempo perceptível no índice e na leitura.
+
+Ilustrações da coleção, todas em `assets/images/tecnologia/`:
+
+- `tech-hero.svg`: três portais — rede de conhecimento, arco da evolução e engenharia robótica.
+- `tech-ia.svg` e `tech-rede-neural.svg`: malhas luminosas e fluxo entre camadas.
+- `tech-evolucao.svg`: pedra e fogo, ábaco e engrenagens, computador e dispositivo conectado sobre uma linha contínua.
+- `tech-computadores.svg`: válvulas, transistor, circuito integrado e computador pessoal.
+- `tech-robotica.svg` e `tech-robo-partes.svg`: braço mecânico, sensores e robô esquemático com peças numeradas.
+
+Como na jornada, são SVGs autorais e sem texto embutido: rótulos e legendas ficam no HTML, garantindo acessibilidade e manutenção. A trilha de localização aparece no topo em todas as larguras; o indicador de leitura é neutro e não representa pontuação. Detalhes de implementação em `docs/BIBLIOTECA.md`.
+
 ## Princípios
 
 1. Unidade artística entre cenário, mapa, tipografia e interface.
@@ -59,3 +81,4 @@ Todos são SVGs autorais e leves, nítidos em qualquer resolução, sem textos e
 8. Responsividade de 390 px a desktop amplo.
 9. Desempenho: arquivos estáticos, sem dependências.
 10. Acessibilidade: teclado, leitores de tela, contraste e movimento reduzido.
+11. Expansões isoladas: novas coleções podem entrar sem alterar a identidade nem a lógica da jornada original.

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <linearGradient id="fundo" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#040c22"/><stop offset="1" stop-color="#0a1738"/>
+    </linearGradient>
+    <linearGradient id="fluxo" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#4de8ff" stop-opacity=".12"/>
+      <stop offset=".5" stop-color="#4de8ff" stop-opacity=".7"/>
+      <stop offset="1" stop-color="#a78bfa" stop-opacity=".22"/>
+    </linearGradient>
+    <filter id="brilho" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1200" height="700" fill="url(#fundo)"/>
+  <g fill="#0e2b57" fill-opacity=".45" stroke="#4de8ff" stroke-opacity=".14">
+    <rect x="48" y="80" width="190" height="540" rx="24"/>
+    <rect x="330" y="80" width="270" height="540" rx="24"/>
+    <rect x="692" y="80" width="190" height="540" rx="24"/>
+  </g>
+  <g stroke="#4de8ff" stroke-opacity=".12" stroke-width="1" stroke-dasharray="4 10">
+    <path d="M258 350h62m280 0h142"/>
+    <path d="M600 350h82"/>
+  </g>
+
+  <g fill="none" stroke="url(#fluxo)" stroke-width="1.5">
+    <path d="M143 170 420 170M143 170 420 340M143 170 420 510M143 290 420 170M143 290 420 340M143 290 420 510M143 410 420 170M143 410 420 340M143 410 420 510M143 530 420 170M143 530 420 340M143 530 420 510"/>
+    <path d="M420 170 787 220M420 170 787 370M420 170 787 520M420 340 787 220M420 340 787 370M420 340 787 520M420 510 787 220M420 510 787 370M420 510 787 520"/>
+  </g>
+
+  <g fill="#4de8ff" filter="url(#brilho)">
+    <circle cx="143" cy="170" r="12"/><circle cx="143" cy="290" r="12"/>
+    <circle cx="143" cy="410" r="12"/><circle cx="143" cy="530" r="12"/>
+  </g>
+  <g fill="#7c6cff" filter="url(#brilho)">
+    <circle cx="420" cy="170" r="13"/><circle cx="420" cy="255" r="13"/>
+    <circle cx="420" cy="340" r="13"/><circle cx="420" cy="425" r="13"/><circle cx="420" cy="510" r="13"/>
+  </g>
+  <g fill="#e8c46a" filter="url(#brilho)">
+    <circle cx="787" cy="220" r="14"/><circle cx="787" cy="370" r="14"/><circle cx="787" cy="520" r="14"/>
+  </g>
+
+  <g fill="none" stroke="#4de8ff" stroke-opacity=".3">
+    <circle cx="143" cy="170" r="24"/><circle cx="420" cy="340" r="25"/><circle cx="787" cy="370" r="26"/>
+  </g>
+  <g fill="#4de8ff" opacity=".6">
+    <circle cx="1120" cy="120" r="3"/><circle cx="1080" cy="580" r="2.5"/><circle cx="60" cy="640" r="2.5"/>
+  </g>
+</svg>

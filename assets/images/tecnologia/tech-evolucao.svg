@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="ceo" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2a2118"/><stop offset=".28" stop-color="#3c2e1e"/>
+      <stop offset=".55" stop-color="#172548"/><stop offset=".78" stop-color="#0c2350"/><stop offset="1" stop-color="#0a1638"/>
+    </linearGradient>
+    <radialGradient id="fogo" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#ffb85c" stop-opacity=".55"/><stop offset="1" stop-color="#ffb85c" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="futuro" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#4de8ff" stop-opacity=".35"/><stop offset="1" stop-color="#4de8ff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="linha" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#e8c46a"/><stop offset=".5" stop-color="#9aa7c9"/><stop offset="1" stop-color="#4de8ff"/>
+    </linearGradient>
+    <filter id="g" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#ceo)"/>
+  <ellipse cx="230" cy="640" rx="330" ry="300" fill="url(#fogo)"/>
+  <ellipse cx="1360" cy="420" rx="360" ry="340" fill="url(#futuro)"/>
+
+  <g opacity=".22" stroke="#e8c46a" stroke-width="1">
+    <path d="M0 690h1600M0 742h1600M0 794h1600"/>
+  </g>
+
+  <!-- Pedra e fogo -->
+  <g transform="translate(90 420)">
+    <path d="M40 250 96 120l70 130z" fill="#6f6558" opacity=".9"/>
+    <path d="M150 250 206 150l58 100z" fill="#8a7c68" opacity=".85"/>
+    <path d="M240 250 278 178l54 72z" fill="#5d554b" opacity=".9"/>
+    <path d="M200 250c-34-26-20-70 8-96 2 26 18 30 22 6 22 30 24 62 2 90z" fill="#ffb85c" filter="url(#g)" opacity=".95"/>
+    <path d="M214 250c-14-18-8-42 6-56 0 16 8 18 12 4 12 18 12 38 2 52z" fill="#ffe3a6"/>
+    <g stroke="#b08b4f" stroke-width="5" stroke-linecap="round" opacity=".8">
+      <path d="M60 280h260M110 280l-18 40M260 280l22 40"/>
+    </g>
+  </g>
+
+  <!-- Ábaco e engrenagens -->
+  <g transform="translate(430 430)">
+    <rect x="0" y="90" width="210" height="150" rx="12" fill="#5a432d" stroke="#b08b4f" stroke-opacity=".7" stroke-width="3"/>
+    <g stroke="#d8b477" stroke-width="4">
+      <path d="M24 116h162M24 152h162M24 188h162"/>
+    </g>
+    <g fill="#e8c46a">
+      <circle cx="52" cy="116" r="10"/><circle cx="88" cy="116" r="10"/><circle cx="140" cy="152" r="10"/>
+      <circle cx="176" cy="152" r="10"/><circle cx="72" cy="188" r="10"/><circle cx="118" cy="188" r="10"/><circle cx="154" cy="188" r="10"/>
+    </g>
+    <g transform="translate(230 20)" fill="none" stroke="#c9a66b" stroke-width="10" opacity=".85">
+      <circle cx="50" cy="50" r="42" stroke-dasharray="14 9"/>
+      <circle cx="130" cy="112" r="28" stroke-dasharray="10 7"/>
+    </g>
+    <rect x="34" y="262" width="180" height="18" rx="9" fill="#8a6c45" opacity=".7"/>
+  </g>
+
+  <!-- Computador antigo -->
+  <g transform="translate(760 360)">
+    <rect x="0" y="0" width="150" height="220" rx="10" fill="#243047" stroke="#8fa3c4" stroke-opacity=".55" stroke-width="2"/>
+    <rect x="18" y="24" width="114" height="82" rx="5" fill="#07152b" stroke="#4de8ff" stroke-opacity=".55"/>
+    <path d="M30 88h18l10-28 12 44 12-34 10 18h18" fill="none" stroke="#4de8ff" stroke-width="2" opacity=".8"/>
+    <g fill="#7f8ca6"><rect x="24" y="130" width="102" height="8" rx="4"/><rect x="24" y="150" width="102" height="8" rx="4"/><rect x="24" y="170" width="70" height="8" rx="4"/></g>
+    <rect x="168" y="40" width="118" height="180" rx="10" fill="#1b2940" stroke="#8fa3c4" stroke-opacity=".4" stroke-width="2"/>
+    <rect x="188" y="62" width="78" height="62" rx="4" fill="#4de8ff" fill-opacity=".12" stroke="#4de8ff" stroke-opacity=".5"/>
+    <g fill="#8fa3c4"><circle cx="194" cy="156" r="5"/><circle cx="216" cy="156" r="5"/><circle cx="238" cy="156" r="5"/></g>
+  </g>
+
+  <!-- Dispositivo e futuro -->
+  <g transform="translate(1090 300)">
+    <rect x="30" y="80" width="170" height="300" rx="28" fill="#0a1c3c" stroke="#4de8ff" stroke-opacity=".7" stroke-width="3"/>
+    <rect x="44" y="104" width="142" height="248" rx="14" fill="#123665"/>
+    <path d="M58 300c24-46 42-14 62-64 18 44 34 12 52-26" fill="none" stroke="#4de8ff" stroke-width="3" opacity=".8"/>
+    <circle cx="115" cy="356" r="7" fill="#4de8ff" opacity=".8"/>
+    <g fill="none" stroke="#a78bfa" stroke-opacity=".55" stroke-width="2">
+      <circle cx="115" cy="230" r="190"/><circle cx="115" cy="230" r="150" stroke-dasharray="5 12"/>
+    </g>
+  </g>
+
+  <path d="M40 760C360 700 620 700 860 730s500 30 700-40" fill="none" stroke="url(#linha)" stroke-width="4" stroke-linecap="round" filter="url(#g)"/>
+  <g fill="#e8c46a">
+    <circle cx="150" cy="748" r="7"/><circle cx="520" cy="722" r="7"/>
+  </g>
+  <g fill="#4de8ff" filter="url(#g)">
+    <circle cx="900" cy="734" r="8"/><circle cx="1320" cy="716" r="8"/>
+  </g>
+</svg>
