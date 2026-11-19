@@ -538,10 +538,7 @@
       '<div class="opcoes" role="group" aria-label="Alternativas da pergunta ' + (qi + 1) + '">' + opcoes + '</div>' +
       feedback +
       '<button class="dica-btn" type="button" data-acao="dica" data-qi="' + qi + '"' + (estado.dificuldade === 'explorador' ? '' : ' hidden') + '>◈ Usar dica (eliminar uma alternativa)</button>' +
-      '<div class="quiz-acoes">' +
-        '<button class="btn btn-primary pergunta-proxima" type="button" data-acao="proxima-pergunta" data-qi="' + qi + '" hidden>Próxima pergunta →</button>' +
-        (qi === 0 ? '<button class="btn btn-pular" type="button" data-acao="pular">Explorar sem responder →</button>' : '') +
-      '</div></section>';
+      '</section>';
   }
 
   function montarCapitulo(i) {
@@ -582,7 +579,10 @@
           '<div class="quiz" id="quiz">' +
             '<span class="quiz-etiqueta">✦ Hora de guardar esta lembrança</span>' +
             perguntas.map(function (p, qi) { return perguntaHTML(c, p, qi, perguntas.length); }).join('') +
-            '<div class="quiz-acoes-finais"><button class="btn btn-primary continuar" id="continueBtn" type="button" data-acao="continuar" hidden></button></div>' +
+            '<div class="quiz-acoes" id="quizAcoes">' +
+              '<button class="btn btn-primary pergunta-proxima" id="proximaPerguntaBtn" type="button" data-acao="proxima-pergunta" data-qi="0" hidden>Próxima pergunta →</button>' +
+              '<button class="btn btn-primary continuar" id="continueBtn" type="button" data-acao="continuar">Continuar a jornada →</button>' +
+            '</div>' +
           '</div>' +
         '</aside>' +
       '</div>';
@@ -590,6 +590,7 @@
     $('continueBtn').textContent = i === TOTAL - 1 ? 'Ver a comparação →' : 'Continuar a jornada →';
     $('prevBtn').disabled = i === 0;
     $('nextBtn').textContent = i === TOTAL - 1 ? 'Ver comparação →' : 'Próxima fase →';
+    sincronizarAcoesQuiz(0);
     restaurarQuiz(c, perguntas);
     visitar(c.id);
     sincronizarMapa();
@@ -605,12 +606,21 @@
       proximaNaoRespondida = qi;
       break;
     }
-    if (proximaNaoRespondida > 0) {
-      mostrarPergunta(proximaNaoRespondida);
-      const anterior = stageContent.querySelector('.pergunta-bloco[data-pergunta="' + (proximaNaoRespondida - 1) + '"] .pergunta-proxima');
-      if (anterior) anterior.hidden = false;
-    }
-    if (todasRespondidas()) $('continueBtn').hidden = false;
+    if (proximaNaoRespondida > 0) mostrarPergunta(proximaNaoRespondida);
+  }
+
+  function acertoRegistrado(id, qi) {
+    const r = estado.respostas[chaveResposta(id, qi)];
+    return Boolean(r && r.correta);
+  }
+
+  function sincronizarAcoesQuiz(qi) {
+    const botao = $('proximaPerguntaBtn');
+    if (!botao) return;
+    const c = caps[atual];
+    const total = perguntasDe(c).length;
+    botao.dataset.qi = String(qi);
+    botao.hidden = qi >= total - 1 || !acertoRegistrado(c.id, qi);
   }
 
   function renderizarCapitulo(i, animar) {
@@ -652,6 +662,7 @@
     });
     const bloco = stageContent.querySelector('.pergunta-bloco[data-pergunta="' + qi + '"]');
     if (bloco && !reduced) bloco.classList.add('is-entrando');
+    sincronizarAcoesQuiz(qi);
   }
 
   function celebrar(bloco) {
@@ -734,13 +745,7 @@
       salvar();
       sincronizarTudo();
 
-      const proximo = stageContent.querySelector('.pergunta-bloco[data-pergunta="' + (qi + 1) + '"]');
-      if (proximo) {
-        const botaoProximo = bloco.querySelector('.pergunta-proxima');
-        if (botaoProximo) botaoProximo.hidden = false;
-      } else if (todasRespondidas()) {
-        $('continueBtn').hidden = false;
-      }
+      sincronizarAcoesQuiz(qi);
       return;
     }
 
