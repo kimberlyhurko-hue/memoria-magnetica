@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0b1914">
-  <meta name="description" content="Uma jornada ilustrada pela evolução da memória: da vida celular aos sistemas computacionais.">
+  <meta name="description" content="Uma jornada ilustrada pela evolução da memória: da vida celular aos sistemas computacionais e à inteligência artificial.">
   <title>A Evolução da Memória — Uma Jornada Ilustrada</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,6 +15,7 @@
 <body>
   <div class="grain" aria-hidden="true"></div>
   <div class="particles" id="particles" aria-hidden="true"></div>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo principal</a>
 
   <header class="site-header" id="siteHeader">
     <a class="brand" href="#inicio" data-nav="inicio" aria-label="Voltar ao início">
@@ -25,21 +26,30 @@
       <a href="#prologo" data-nav="prologo">Prólogo</a>
       <a href="#mapa" data-nav="mapa">Mapa</a>
       <a href="#jornada" data-nav="jornada">Jornada</a>
+      <a href="#linha-do-tempo" data-nav="linha-do-tempo">Tempo</a>
+      <a href="#glossario" data-nav="glossario">Glossário</a>
       <a href="#comparacao" data-nav="comparacao">Comparar</a>
+      <a href="#conquistas" data-nav="conquistas">Conquistas</a>
     </nav>
-    <div class="header-progress" title="Progresso da jornada">
-      <span class="progress-label" id="headerProgressLabel">0/7</span>
-      <span class="progress-track"><span class="progress-fill" id="headerProgressFill"></span></span>
+    <div class="header-tools">
+      <button class="icon-btn" id="soundToggle" type="button" aria-pressed="false" aria-label="Ativar sons">
+        <span aria-hidden="true">♪</span>
+      </button>
+      <div class="header-progress" title="Progresso da jornada">
+        <span class="progress-label" id="headerProgressLabel">0/7</span>
+        <span class="progress-track"><span class="progress-fill" id="headerProgressFill"></span></span>
+      </div>
     </div>
-    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="siteNav">
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="siteNav">
       <span></span><span></span><span></span>
     </button>
   </header>
 
-  <main>
+  <main id="conteudo">
     <!-- ABERTURA -->
     <section class="hero" id="inicio">
       <div class="hero-bg" role="img" aria-label="Floresta antiga que se transforma em um mundo digital luminoso"></div>
+      <div class="hero-rays" aria-hidden="true"></div>
       <div class="hero-veil" aria-hidden="true"></div>
       <div class="hero-inner">
         <div class="hero-copy">
@@ -93,18 +103,24 @@
         <span class="nota-marca" aria-hidden="true">✦</span>
         <div>
           <span class="nota-etiqueta">O fio da história</span>
-          <p>Siga este fio desde as menores estruturas da vida até os sistemas que guardam o mundo digital.</p>
+          <p>Siga este fio desde as menores estruturas da vida até os sistemas que guardam o mundo digital. Você pode escolher a ordem: o atlas não tranca nenhuma ilha.</p>
         </div>
       </div>
     </section>
 
-    <!-- MAPA / LINHA DO TEMPO -->
+    <!-- MAPA -->
     <section class="section mapa" id="mapa">
-      <div class="section-head">
-        <p class="kicker">O atlas da memória <span class="kicker-dot">✦</span> Mapa da jornada</p>
-        <h2>Sete ilhas, uma mesma história</h2>
-        <p class="section-lead">Siga o caminho pontilhado pelo mar do tempo. Cada ilha guarda uma forma de lembrar — toque em qualquer uma para desembarcar. A exploração é livre, e as respostas só marcam o seu progresso.</p>
+      <div class="section-head section-head-split">
+        <div>
+          <p class="kicker">O atlas da memória <span class="kicker-dot">✦</span> Mapa da jornada</p>
+          <h2>Sete ilhas, uma mesma história</h2>
+          <p class="section-lead">Siga o caminho luminoso pelo mar do tempo. Cada ilha guarda uma forma de lembrar — toque em qualquer uma para desembarcar.</p>
+        </div>
+        <button class="btn btn-quiet modo-livre" id="freeExploreBtn" type="button" aria-pressed="false">
+          <span aria-hidden="true">⌖</span> Modo exploração livre
+        </button>
       </div>
+      <p class="sr-only" id="freeExploreStatus" role="status" aria-live="polite"></p>
 
       <div class="map-frame">
         <div class="map-canvas" id="mapCanvas">
@@ -112,9 +128,11 @@
             <source media="(max-width: 680px)" srcset="assets/images/mapa-mundo-mobile.svg">
             <img src="assets/images/mapa-mundo.svg" alt="" width="1600" height="760">
           </picture>
-          <div class="map-path" id="mapPath" aria-label="Mapa interativo das sete fases"></div>
+          <svg class="map-rotas map-rotas-desktop" id="mapRoutesDesktop" viewBox="0 0 1600 760" preserveAspectRatio="none" aria-hidden="true"></svg>
+          <svg class="map-rotas map-rotas-mobile" id="mapRoutesMobile" viewBox="0 0 700 1400" preserveAspectRatio="none" aria-hidden="true"></svg>
+          <div class="map-path" id="mapPath" role="group" aria-label="Mapa interativo das sete fases"></div>
           <div class="map-legend" aria-hidden="true">
-            <span class="legend-dot"></span> ilhas visitadas &nbsp;·&nbsp; <span class="legend-ring"></span> próxima parada
+            <span class="legend-dot"></span> concluída &nbsp;·&nbsp; <span class="legend-ring"></span> atual &nbsp;·&nbsp; <span class="legend-open"></span> visitada &nbsp;·&nbsp; <span class="legend-new"></span> não explorada
           </div>
         </div>
       </div>
@@ -123,8 +141,8 @@
         <p class="mini-curiosidades-title">✧ Curiosidades encontradas no caminho</p>
         <div class="mini-grid">
           <article class="mini-card"><span>01</span><p>Até células possuem mecanismos de memória: elas reconhecem sinais e ajustam suas respostas.</p></article>
-          <article class="mini-card"><span>02</span><p>Os primeiros humanos registravam o mundo em paredes de pedra, com desenhos e símbolos.</p></article>
-          <article class="mini-card"><span>03</span><p>A RAM é a mesa de trabalho do computador; a ROM é o manual que não se apaga.</p></article>
+          <article class="mini-card"><span>02</span><p>Hermann Ebbinghaus mediu o esquecimento em si mesmo em 1885, com listas de sílabas sem sentido.</p></article>
+          <article class="mini-card"><span>03</span><p>A RAM precisa de energia para existir; um arquivo no SSD permanece com o computador desligado.</p></article>
         </div>
       </div>
     </section>
@@ -134,6 +152,7 @@
       <div class="stage-bg" id="stageBgA" aria-hidden="true"></div>
       <div class="stage-bg" id="stageBgB" aria-hidden="true"></div>
       <div class="stage-veil" aria-hidden="true"></div>
+      <div class="stage-glow" aria-hidden="true"></div>
 
       <div class="stage-top">
         <span class="stage-chapter" id="stageChapter">FASE 01 / 07</span>
@@ -141,7 +160,16 @@
           <span class="stage-progress-label" id="stageProgressLabel">0 de 7 fases concluídas</span>
           <span class="progress-track"><span class="progress-fill" id="stageProgressFill"></span></span>
         </div>
+        <div class="difficulty-control">
+          <label for="difficultySelect">Dificuldade</label>
+          <select id="difficultySelect" aria-describedby="difficultyHint">
+            <option value="explorador">Explorador</option>
+            <option value="aprendiz">Aprendiz</option>
+            <option value="mestre">Mestre</option>
+          </select>
+        </div>
       </div>
+      <p class="stage-hint" id="difficultyHint">Explorador: uma pergunta por fase, com dica para eliminar uma alternativa.</p>
 
       <div class="stage-content" id="stageContent" aria-live="polite">
         <!-- conteúdo renderizado por js/app.js -->
@@ -149,9 +177,38 @@
 
       <div class="stage-nav">
         <button class="btn btn-nav" id="prevBtn" type="button">← Fase anterior</button>
-        <button class="btn btn-nav" id="openMapBtn" type="button">✦ Mapa</button>
+        <div class="stage-nav-mid">
+          <button class="btn btn-nav" id="openMapBtn" type="button">✦ Mapa</button>
+          <button class="btn btn-nav" id="reviewBtn" type="button">↺ Revisar respostas</button>
+        </div>
         <button class="btn btn-nav btn-nav-next" id="nextBtn" type="button">Próxima fase →</button>
       </div>
+    </section>
+
+    <!-- LINHA DO TEMPO -->
+    <section class="section timeline-section" id="linha-do-tempo">
+      <div class="section-head">
+        <p class="kicker">O fio do tempo <span class="kicker-dot">✦</span> Linha do tempo</p>
+        <h2>Nove marcos, sete ilhas</h2>
+        <p class="section-lead">Um mesmo problema — guardar para depois — recebeu respostas diferentes em cada época. Escolha um marco para desembarcar na fase correspondente.</p>
+      </div>
+      <ol class="timeline" id="timelineList" aria-label="Marcos da evolução da memória"></ol>
+    </section>
+
+    <!-- GLOSSÁRIO -->
+    <section class="section glossario" id="glossario">
+      <div class="section-head">
+        <p class="kicker">O dicionário do atlas <span class="kicker-dot">✦</span> Glossário</p>
+        <h2>Palavras que guardam ideias</h2>
+        <p class="section-lead">Termos de biologia, psicologia, história e computação que aparecem ao longo da jornada.</p>
+      </div>
+      <div class="glossary-tools">
+        <label class="sr-only" for="glossarySearch">Buscar termo no glossário</label>
+        <input id="glossarySearch" type="search" placeholder="Buscar termo…" autocomplete="off">
+        <div class="glossary-filters" id="glossaryFilters" role="group" aria-label="Filtrar glossário por categoria"></div>
+      </div>
+      <p class="glossary-count" id="glossaryCount" role="status" aria-live="polite"></p>
+      <div class="glossary-grid" id="glossaryList"></div>
     </section>
 
     <!-- COMPARAÇÃO -->
@@ -174,9 +231,32 @@
         <div class="compare-row" role="row"><span role="cell">Velocidade</span><span role="cell">Rápida, mas variável</span><span role="cell">Muito rápida e constante</span></div>
         <div class="compare-row" role="row"><span role="cell">Durabilidade</span><span role="cell">Pode mudar com o tempo e com emoções</span><span role="cell">Depende do suporte e da energia</span></div>
         <div class="compare-row" role="row"><span role="cell">Flexibilidade</span><span role="cell">Associa ideias, sentidos e emoções</span><span role="cell">Segue regras e endereços precisos</span></div>
+        <div class="compare-row" role="row"><span role="cell">Aprendizado</span><span role="cell">Muda conexões com a experiência</span><span role="cell">Modelos ajustam parâmetros com dados de treino</span></div>
       </div>
-      <p class="compare-footnote">✧ As duas podem falhar: uma lembrança humana pode esquecer ou mudar; um arquivo pode se corromper. As duas são maneiras extraordinárias de vencer o tempo.</p>
+      <p class="compare-footnote">✧ As duas podem falhar: uma lembrança humana pode esquecer ou mudar; um arquivo pode se corromper. Modelos de inteligência artificial guardam padrões em parâmetros — não uma cópia exata de tudo que leram.</p>
       <div class="comparacao-cta"><a class="btn btn-gold" href="#conclusao">Ir para a conclusão →</a></div>
+    </section>
+
+    <!-- ESTATÍSTICAS E CONQUISTAS -->
+    <section class="section conquistas" id="conquistas">
+      <div class="section-head">
+        <p class="kicker">O registro da viagem <span class="kicker-dot">✦</span> Desempenho</p>
+        <h2>O que você guardou</h2>
+        <p class="section-lead">Pontuação, precisão, medalhas e o histórico das suas descobertas. Tudo fica salvo neste navegador.</p>
+      </div>
+
+      <div class="stats-grid" id="statsGrid" aria-label="Estatísticas da jornada"></div>
+
+      <div class="painel-grid">
+        <div class="painel-card">
+          <h3>Medalhas</h3>
+          <div class="achievements-grid" id="achievementsList"></div>
+        </div>
+        <div class="painel-card">
+          <h3>Histórico recente</h3>
+          <ol class="history-list" id="historyList"></ol>
+        </div>
+      </div>
     </section>
 
     <!-- CONCLUSÃO -->
@@ -191,12 +271,39 @@
         <p class="kicker">Última página <span class="kicker-dot">✦</span> O que fica</p>
         <h2>A memória continua</h2>
         <blockquote>“Da primeira forma de armazenamento da vida aos sistemas digitais, a memória continua sendo essencial para preservar informações, aprender e transformar o futuro.”</blockquote>
+
+        <div class="nome-card">
+          <label for="participanteNome">Seu nome para o certificado</label>
+          <div class="nome-row">
+            <input id="participanteNome" type="text" maxlength="48" placeholder="Como você quer ser chamado?" autocomplete="name">
+            <button class="btn btn-gold" id="certificateBtn" type="button">Criar certificado ✦</button>
+          </div>
+        </div>
+
         <div class="conclusao-actions">
-          <button class="btn btn-gold" id="restartBtn" type="button">Refazer a jornada ↺</button>
+          <button class="btn btn-quiet" id="shareBtn" type="button">Compartilhar resultado</button>
+          <button class="btn btn-quiet" id="restartBtn" type="button">Refazer a jornada ↺</button>
           <a class="btn btn-quiet" href="#inicio">Voltar ao início</a>
         </div>
         <p class="conclusao-status" id="conclusaoStatus">Você já pode visitar as sete fases. Responda às perguntas para marcar cada ilha como concluída.</p>
       </div>
+    </section>
+
+    <!-- FONTES GERAIS -->
+    <section class="section fontes-gerais" id="fontes">
+      <div class="section-head">
+        <p class="kicker">Referências <span class="kicker-dot">✦</span> Fontes</p>
+        <h2>De onde vieram os fatos</h2>
+        <p class="section-lead">Cada fase traz suas próprias referências. Estas são obras de apoio usadas em toda a jornada.</p>
+      </div>
+      <ul class="fontes-lista">
+        <li>OPENSTAX. <i>Biology 2e</i>. Houston: Rice University, 2018. <a href="https://openstax.org/details/books/biology-2e" target="_blank" rel="noopener noreferrer">Acesso livre</a>.</li>
+        <li>OPENSTAX. <i>Psychology 2e</i>. Houston: Rice University, 2018. <a href="https://openstax.org/details/books/psychology-2e" target="_blank" rel="noopener noreferrer">Acesso livre</a>.</li>
+        <li>COMPUTER HISTORY MUSEUM. <i>Timeline of Computing</i>. <a href="https://www.computerhistory.org/timeline/computers/" target="_blank" rel="noopener noreferrer">Acesso online</a>.</li>
+        <li>UNESCO. <i>Memory of the World</i>. <a href="https://www.unesco.org/en/memory-world" target="_blank" rel="noopener noreferrer">Acesso online</a>.</li>
+        <li>SHANNON, C. E. A Mathematical Theory of Communication. <i>Bell System Technical Journal</i>, 1948. <a href="https://people.math.harvard.edu/~ctm/home/text/others/shannon/entropy/entropy.pdf" target="_blank" rel="noopener noreferrer">Texto (PDF)</a>.</li>
+      </ul>
+      <p class="fontes-aviso">Datas anteriores ao registro escrito são aproximações. Quando há divergência entre fontes, o texto usa “c.” (circa) ou “estimativa”.</p>
     </section>
   </main>
 
@@ -209,14 +316,85 @@
   <!-- MAPA EM JANELA -->
   <div class="modal" id="mapModal" hidden>
     <div class="modal-backdrop" data-close-modal></div>
-    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1">
       <button class="modal-close" id="closeModalBtn" type="button" aria-label="Fechar mapa">×</button>
       <p class="kicker">Mapa da jornada</p>
       <h2 id="modalTitle">Escolha uma ilha</h2>
       <p class="modal-lead">Você pode visitar qualquer fase livremente.</p>
-      <div class="modal-map" id="modalMap"></div>
+      <div class="modal-map" id="modalMap" role="group" aria-label="Fases disponíveis"></div>
     </div>
   </div>
+
+  <!-- REVISÃO DAS PERGUNTAS -->
+  <div class="modal" id="reviewModal" hidden>
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="reviewTitle" tabindex="-1">
+      <button class="modal-close" id="closeReviewBtn" type="button" aria-label="Fechar revisão">×</button>
+      <p class="kicker">Caderno de campo</p>
+      <h2 id="reviewTitle">Revisar respostas</h2>
+      <p class="modal-lead" id="reviewLead">Suas respostas aparecem aqui depois da primeira interação.</p>
+      <div class="review-list" id="reviewList"></div>
+    </div>
+  </div>
+
+  <!-- COMPARTILHAMENTO -->
+  <div class="modal" id="shareModal" hidden>
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-card modal-pequeno" role="dialog" aria-modal="true" aria-labelledby="shareTitle" aria-describedby="shareLead" tabindex="-1">
+      <button class="modal-close" id="closeShareBtn" type="button" aria-label="Fechar compartilhamento">×</button>
+      <p class="kicker">Espalhe a descoberta</p>
+      <h2 id="shareTitle">Compartilhar resultado</h2>
+      <p class="modal-lead" id="shareLead">Se o navegador não permitir a cópia automática, selecione e copie o texto abaixo.</p>
+      <label class="sr-only" for="shareText">Texto do resultado</label>
+      <textarea class="share-textarea" id="shareText" rows="5" readonly></textarea>
+      <div class="share-actions">
+        <button class="btn btn-quiet" id="closeShareActionBtn" type="button">Fechar</button>
+        <button class="btn btn-gold" id="copyShareBtn" type="button">Copiar novamente</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CERTIFICADO -->
+  <div class="modal" id="certificateModal" hidden>
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-card certificate-modal" role="dialog" aria-modal="true" aria-labelledby="certificateTitle" tabindex="-1">
+      <button class="modal-close" id="closeCertificateBtn" type="button" aria-label="Fechar certificado">×</button>
+      <div class="certificate-paper" id="certificatePaper">
+        <span class="certificate-ornament" aria-hidden="true">✦ &nbsp; · &nbsp; ✦ &nbsp; · &nbsp; ✦</span>
+        <p class="certificate-kicker">A Evolução da Memória</p>
+        <h2 id="certificateTitle">Certificado de jornada</h2>
+        <p class="certificate-text">Certificamos que</p>
+        <p class="certificate-name" id="certificateName">—</p>
+        <p class="certificate-text">percorreu as sete ilhas da memória, da vida celular aos sistemas digitais.</p>
+        <div class="certificate-details">
+          <span>Conclusão: <b id="certificateDate">—</b></span>
+          <span>Pontuação: <b id="certificateScore">—</b></span>
+          <span>Registro: <b id="certificateCode">—</b></span>
+        </div>
+        <p class="certificate-note">Certificado simbólico desta experiência educativa, gerado no seu navegador.</p>
+      </div>
+      <div class="certificate-actions">
+        <button class="btn btn-gold" id="certificatePrintBtn" type="button">Imprimir / salvar em PDF</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONFIRMAÇÃO DE REINÍCIO -->
+  <div class="modal" id="resetModal" hidden>
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-card modal-pequeno" role="alertdialog" aria-modal="true" aria-labelledby="resetTitle" aria-describedby="resetText" tabindex="-1">
+      <button class="modal-close" id="closeResetBtn" type="button" aria-label="Cancelar">×</button>
+      <p class="kicker">Recomeçar</p>
+      <h2 id="resetTitle">Apagar seu progresso?</h2>
+      <p class="modal-lead" id="resetText">Isso apaga pontuação, medalhas, histórico, nome e respostas salvas neste navegador. Não é possível desfazer.</p>
+      <div class="reset-actions">
+        <button class="btn btn-quiet" id="cancelResetBtn" type="button">Manter meu progresso</button>
+        <button class="btn btn-perigo" id="confirmResetBtn" type="button">Sim, recomeçar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 
   <script src="js/data.js"></script>
   <script src="js/app.js"></script>
