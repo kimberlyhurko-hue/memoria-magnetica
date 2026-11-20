@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/biblioteca.css">
   <link rel="stylesheet" href="css/atlas.css">
+  <link rel="stylesheet" href="css/conquistas.css">
 </head>
 <body>
   <div class="grain" aria-hidden="true"></div>
@@ -34,6 +35,7 @@
       <a href="#glossario" data-nav="glossario">Glossário</a>
       <a href="#comparacao" data-nav="comparacao">Comparar</a>
       <a href="#conquistas" data-nav="conquistas">Conquistas</a>
+      <a href="#medalhas" data-nav="medalhas">Medalhas</a>
     </nav>
     <div class="header-tools">
       <button class="icon-btn" id="soundToggle" type="button" aria-pressed="false" aria-label="Ativar sons">
@@ -278,6 +280,18 @@
           <ol class="history-list" id="historyList"></ol>
         </div>
       </div>
+      <p class="conquistas-cta"><a class="btn btn-quiet" href="#medalhas">Ver coleção de medalhas →</a></p>
+    </section>
+
+    <!-- COLEÇÃO DE MEDALHAS VISUAIS -->
+    <section class="section colecao-medalhas" id="medalhas" aria-labelledby="medalhasTitulo">
+      <div class="section-head">
+        <p class="kicker">Os objetos da biblioteca <span class="kicker-dot">✦</span> Medalhas</p>
+        <h2 id="medalhasTitulo">Lembranças encontradas</h2>
+        <p class="section-lead">Pequenos símbolos das etapas que você já percorreu. Cada medalha aparece aqui quando é conquistada e pode ser revisitada quando quiser.</p>
+      </div>
+      <p class="medalhas-resumo" id="medalhasResumo" role="status" aria-live="polite"></p>
+      <div class="medalhas-grade" id="medalhasGrid"></div>
     </section>
 
     <!-- CONCLUSÃO -->
@@ -420,6 +434,24 @@
     </div>
   </div>
 
+  <!-- CELEBRAÇÃO DE MEDALHA -->
+  <div class="modal modal-medalha" id="medalhaModal" hidden>
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-card medalha-card" role="dialog" aria-modal="true" aria-labelledby="medalhaTitulo" aria-describedby="medalhaMensagem" tabindex="-1">
+      <button class="modal-close" id="fecharMedalhaBtn" type="button" aria-label="Fechar janela">×</button>
+      <div class="medalha-cena" aria-hidden="true">
+        <span class="medalha-halo"></span>
+        <span class="medalha-brilho"></span>
+        <span class="medalha-particulas" id="medalhaParticulas"></span>
+        <img class="medalha-imagem" id="medalhaImagem" src="" alt="">
+      </div>
+      <p class="medalha-kicker" id="medalhaKicker">Uma lembrança da jornada</p>
+      <h2 id="medalhaTitulo"></h2>
+      <p class="medalha-mensagem" id="medalhaMensagem"></p>
+      <button class="btn btn-quiet medalha-fechar" id="medalhaFecharBtn" type="button">Continuar explorando</button>
+    </div>
+  </div>
+
   <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 
   <script src="js/data.js"></script>
@@ -427,5 +459,7 @@
   <script src="js/biblioteca-data.js"></script>
   <script src="js/atlas-data.js"></script>
   <script src="js/biblioteca.js"></script>
+  <script src="js/conquistas-data.js"></script>
+  <script src="js/conquistas.js"></script>
 </body>
 </html>

@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none" role="img" aria-label="Medalha com um livro aberto e um broto dourado">
+  <defs>
+    <radialGradient id="pd-disc" cx="50%" cy="42%" r="62%">
+      <stop offset="0" stop-color="#2d4a35"/>
+      <stop offset=".62" stop-color="#162b25"/>
+      <stop offset="1" stop-color="#0b1917"/>
+    </radialGradient>
+    <linearGradient id="pd-ouro" x1="20" y1="20" x2="180" y2="180" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f6dfa6"/>
+      <stop offset=".45" stop-color="#d7a94f"/>
+      <stop offset="1" stop-color="#8a6229"/>
+    </linearGradient>
+    <linearGradient id="pd-folha" x1="80" y1="90" x2="120" y2="45" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#e7c878"/>
+      <stop offset="1" stop-color="#9fc47e"/>
+    </linearGradient>
+    <filter id="pd-brilho" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="5"/>
+    </filter>
+  </defs>
+
+  <circle cx="100" cy="100" r="88" fill="url(#pd-disc)"/>
+  <circle cx="100" cy="100" r="88" stroke="url(#pd-ouro)" stroke-width="3"/>
+  <circle cx="100" cy="100" r="80" stroke="#e8c878" stroke-opacity=".35" stroke-width="1"/>
+  <circle cx="100" cy="100" r="73" stroke="#e8c878" stroke-opacity=".14" stroke-width="1" stroke-dasharray="2 6"/>
+
+  <circle cx="100" cy="104" r="52" fill="#e8c878" opacity=".14" filter="url(#pd-brilho)"/>
+
+  <g fill="url(#pd-ouro)" opacity=".7">
+    <circle cx="100" cy="18" r="2.6"/><circle cx="100" cy="182" r="2.6"/>
+    <circle cx="18" cy="100" r="2.6"/><circle cx="182" cy="100" r="2.6"/>
+    <circle cx="42" cy="42" r="1.8" opacity=".7"/><circle cx="158" cy="42" r="1.8" opacity=".7"/>
+    <circle cx="42" cy="158" r="1.8" opacity=".7"/><circle cx="158" cy="158" r="1.8" opacity=".7"/>
+  </g>
+
+  <g transform="translate(0 4)">
+    <path d="M100 92c-17-13-36-15-54-9v52c18-6 37-4 54 9Z" fill="url(#pd-ouro)" opacity=".92"/>
+    <path d="M100 92c17-13 36-15 54-9v52c-18-6-37-4-54 9Z" fill="url(#pd-ouro)" opacity=".82"/>
+    <path d="M100 92v52" stroke="#6f4d21" stroke-width="2.4" opacity=".75"/>
+    <g stroke="#6f4d21" stroke-width="1.2" opacity=".5">
+      <path d="M61 94c11-2 23 0 32 6M61 104c11-2 23 0 32 6M61 114c11-2 23 0 32 6"/>
+      <path d="M139 94c-11-2-23 0-32 6M139 104c-11-2-23 0-32 6M139 114c-11-2-23 0-32 6"/>
+    </g>
+  </g>
+
+  <g stroke="#e8d59a" stroke-width="2.6" stroke-linecap="round">
+    <path d="M100 92V58"/>
+    <path d="M100 80c-10-2-17-8-20-17 10-1 18 5 20 17Z" fill="url(#pd-folha)" stroke="none"/>
+    <path d="M100 70c10-3 16-9 18-18-10 0-17 6-18 18Z" fill="url(#pd-folha)" stroke="none" opacity=".88"/>
+  </g>
+
+  <g fill="#f6e4b2">
+    <circle cx="72" cy="55" r="1.7" opacity=".8"/>
+    <circle cx="132" cy="48" r="1.4" opacity=".7"/>
+    <circle cx="118" cy="36" r="1.9" opacity=".85"/>
+    <circle cx="56" cy="72" r="1.3" opacity=".6"/>
+  </g>
+</svg>

@@ -1,0 +1,285 @@
+/* ============================================================
+   Medalhas visuais — coleção e celebração
+   Camada isolada: só usa classes próprias e as variáveis do site.
+   ============================================================ */
+
+.colecao-medalhas { padding-bottom: 96px; }
+
+.medalhas-resumo {
+  margin: -4px 0 26px;
+  color: var(--suave);
+  font-family: var(--serif);
+  font-size: 1.08rem;
+  font-style: italic;
+}
+
+.medalhas-grade {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(238px, 1fr));
+  gap: 18px;
+  align-items: start;
+}
+
+.medalha-cartao {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  min-height: 100%;
+  padding: 20px;
+  text-align: left;
+  color: var(--texto);
+  font: inherit;
+  border: 1px solid rgba(224, 180, 95, .24);
+  border-radius: var(--raio);
+  background: linear-gradient(155deg, rgba(31, 48, 34, .92), rgba(11, 24, 21, .94));
+  box-shadow: 0 16px 40px rgba(0, 0, 0, .2);
+}
+
+button.medalha-cartao { cursor: pointer; }
+
+.medalha-cartao.is-conquistada {
+  transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+}
+
+.medalha-cartao.is-conquistada:hover,
+.medalha-cartao.is-conquistada:focus-visible {
+  transform: translateY(-4px);
+  border-color: rgba(224, 180, 95, .62);
+  box-shadow: 0 22px 48px rgba(0, 0, 0, .3), var(--brilho);
+}
+
+.medalha-cartao.is-conquistada:focus-visible { outline: 2px solid var(--ouro); outline-offset: 3px; }
+
+.medalha-cartao.is-discreta {
+  border-color: rgba(224, 180, 95, .12);
+  background: linear-gradient(155deg, rgba(26, 36, 30, .7), rgba(10, 19, 17, .8));
+  box-shadow: none;
+}
+
+.medalha-cartao-moldura {
+  display: grid;
+  place-items: center;
+  min-height: 158px;
+  padding: 8px;
+  border-radius: 14px;
+  background: radial-gradient(circle at 50% 45%, rgba(224, 180, 95, .12), transparent 65%);
+}
+
+.medalha-cartao-moldura img {
+  display: block;
+  width: min(100%, 148px);
+  height: auto;
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, .35));
+}
+
+.medalha-cartao.is-discreta .medalha-cartao-moldura img {
+  opacity: .32;
+  filter: grayscale(1) brightness(.75);
+}
+
+.medalha-cartao-corpo { display: flex; flex-direction: column; gap: 6px; }
+
+.medalha-cartao-nome {
+  font-family: var(--serif);
+  font-size: 1.38rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.medalha-cartao-descricao {
+  color: var(--suave);
+  font-size: .84rem;
+  line-height: 1.5;
+}
+
+.medalha-cartao.is-discreta .medalha-cartao-nome,
+.medalha-cartao.is-discreta .medalha-cartao-descricao { opacity: .62; }
+
+.medalha-cartao-estado {
+  margin-top: 4px;
+  color: var(--ouro);
+  font-family: var(--display);
+  font-size: .62rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.medalha-cartao.is-discreta .medalha-cartao-estado { color: var(--suave); opacity: .6; }
+
+.conquistas-cta { margin: 22px 0 0; }
+
+/* ---------- Janela de celebração ---------- */
+
+.modal-medalha .modal-backdrop {
+  background: radial-gradient(circle at 50% 44%, rgba(8, 24, 21, .74), rgba(3, 10, 9, .92));
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.medalha-card {
+  width: min(540px, 100%);
+  padding: clamp(26px, 5vw, 44px);
+  text-align: center;
+  background:
+    radial-gradient(circle at 50% 30%, rgba(224, 180, 95, .16), transparent 52%),
+    linear-gradient(165deg, #122d26, #091815 70%);
+  border-color: rgba(224, 180, 95, .42);
+}
+
+.modal-medalha .modal-close {
+  top: 12px;
+  right: 14px;
+  width: 34px;
+  height: 34px;
+  font-size: 1.2rem;
+  color: var(--suave);
+  border-color: rgba(224, 180, 95, .22);
+  background: rgba(255, 255, 255, .04);
+}
+
+.medalha-cena {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: clamp(178px, 42vw, 236px);
+  margin: 0 auto 18px;
+  isolation: isolate;
+}
+
+.medalha-halo,
+.medalha-brilho {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.medalha-halo {
+  width: min(88%, 250px);
+  aspect-ratio: 1;
+  background: radial-gradient(circle, rgba(224, 180, 95, .2), rgba(224, 180, 95, .05) 48%, transparent 72%);
+}
+
+.medalha-brilho {
+  width: min(64%, 176px);
+  aspect-ratio: 1;
+  background: radial-gradient(circle, rgba(255, 232, 173, .22), transparent 68%);
+  filter: blur(8px);
+}
+
+.medalha-particulas {
+  position: absolute;
+  inset: -8%;
+  pointer-events: none;
+}
+
+.medalha-ponto {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #f6dda1;
+  box-shadow: 0 0 10px 2px rgba(246, 221, 161, .45);
+  opacity: 0;
+}
+
+.medalha-imagem {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: clamp(148px, 40vw, 208px);
+  height: auto;
+  filter: drop-shadow(0 16px 28px rgba(0, 0, 0, .42));
+}
+
+.medalha-kicker {
+  margin: 0 0 8px;
+  color: var(--ouro);
+  font-family: var(--display);
+  font-size: .66rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+}
+
+.medalha-card h2 {
+  margin: 0 0 14px;
+  font-family: var(--serif);
+  font-size: clamp(1.65rem, 5.5vw, 2.35rem);
+  line-height: 1.08;
+}
+
+.medalha-mensagem {
+  max-width: 38ch;
+  margin: 0 auto 22px;
+  color: #e9e4ce;
+  font-family: var(--serif);
+  font-size: clamp(1.02rem, 3.6vw, 1.19rem);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.medalha-fechar {
+  min-width: 190px;
+  font-size: .82rem;
+}
+
+/* A sequência só acontece na primeira conquista; ao rever a medalha,
+   a janela abre pronta, sem repetir a revelação. */
+.modal-medalha.is-celebrando .modal-backdrop { animation: medalha-velo .7s ease both; }
+.modal-medalha.is-celebrando .medalha-halo { animation: medalha-halo 1.5s ease-out .2s both; }
+.modal-medalha.is-celebrando .medalha-brilho { animation: medalha-halo 1.8s ease-out .38s both; }
+.modal-medalha.is-celebrando .medalha-ponto { animation: medalha-ponto 1.5s ease-out var(--delay) both; }
+.modal-medalha.is-celebrando .medalha-imagem { animation: medalha-revelar 1s cubic-bezier(.2, .75, .25, 1) .42s both; }
+.modal-medalha.is-celebrando .medalha-kicker { animation: medalha-subir .6s ease .95s both; }
+.modal-medalha.is-celebrando h2 { animation: medalha-subir .7s ease 1.05s both; }
+.modal-medalha.is-celebrando .medalha-mensagem { animation: medalha-subir .75s ease 1.2s both; }
+.modal-medalha.is-celebrando .medalha-fechar { animation: medalha-subir .6s ease 1.4s both; }
+
+@keyframes medalha-velo {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes medalha-halo {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(.85); }
+  55% { opacity: 1; }
+  100% { opacity: .82; transform: translate(-50%, -50%) scale(1); }
+}
+
+@keyframes medalha-ponto {
+  0% { opacity: 0; transform: translateY(8px) scale(.5); }
+  45% { opacity: .9; }
+  100% { opacity: .58; transform: translateY(-6px) scale(1); }
+}
+
+@keyframes medalha-revelar {
+  0% { opacity: 0; transform: scale(.84) translateY(12px); filter: drop-shadow(0 0 0 rgba(224, 180, 95, 0)); }
+  60% { opacity: 1; }
+  100% { opacity: 1; transform: scale(1) translateY(0); filter: drop-shadow(0 0 20px rgba(224, 180, 95, .32)); }
+}
+
+@keyframes medalha-subir {
+  from { opacity: 0; transform: translateY(9px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 700px) {
+  .medalhas-grade { grid-template-columns: 1fr; gap: 14px; }
+  .medalha-cartao { padding: 16px; }
+  .medalha-cartao-moldura { min-height: 136px; }
+  .medalha-card { padding: 26px 20px 24px; }
+  .medalha-cena { min-height: 172px; }
+  .medalha-mensagem { max-width: 32ch; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .medalha-ponto { display: none; }
+  .medalha-cartao.is-conquistada { transition: none; }
+  .modal-medalha.is-celebrando .medalha-imagem { filter: drop-shadow(0 0 16px rgba(224, 180, 95, .24)); }
+}

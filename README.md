@@ -78,7 +78,7 @@ O link **Biblioteca** no cabeçalho abre `#/tecnologia`. A navegação usa rotas
 
 Cada tema tem identidade visual própria: azul/ciano e redes para IA; paleta que vai do âmbar ao ciano para a evolução tecnológica; azul/violeta e metal para robótica. A trilha no topo mostra Todas as bibliotecas → Biblioteca principal → coleção → tema → capítulo em desktop e celular. O botão **Voltar à biblioteca principal** retorna ao `#inicio`.
 
-O conteúdo é um texto de estudo, não um jogo: não há vidas, cronômetro, placar, medalhas nem recompensas exageradas. A verificação de leitura explica o acerto e o erro; o único registro é o número de capítulos já visitados. O formato dos dados e o passo a passo para adicionar temas, capítulos ou coleções estão em `docs/BIBLIOTECA.md`.
+O conteúdo é um texto de estudo, não um jogo: não há vidas, cronômetro, placar, competição nem recompensas exageradas. A verificação de leitura explica o acerto e o erro; o registro da biblioteca guarda apenas os capítulos já abertos. As medalhas visuais vivem em uma camada separada, fora da leitura — detalhes abaixo. O formato dos dados e o passo a passo para adicionar temas, capítulos ou coleções estão em `docs/BIBLIOTECA.md`.
 
 ## Capa e universos
 
@@ -94,11 +94,21 @@ Os universos novos são **Vida e Natureza** (Biologia, Corpo Humano, Evolução)
 
 Essa camada é apenas de navegação e identidade visual: `js/app.js`, `js/data.js`, `css/style.css`, `js/biblioteca-data.js` e as rotas originais permanecem intactos. Detalhes em `docs/BIBLIOTECA.md` e `docs/DIRECAO_ARTISTICA.md`.
 
+## Medalhas visuais
+
+A seção **Medalhas** (`#medalhas`) reúne cinco lembranças: **Primeira descoberta**, **Mente curiosa**, **Explorador do conhecimento**, **Jornada concluída** e **Conhecimento em expansão**. Elas celebram etapas reais de leitura — primeiro capítulo aberto, primeira atividade concluída, três bibliotecas visitadas, um tema inteiro percorrido e dois temas concluídos — sem pontuação, ranking, penalidade ou recompensa de jogo.
+
+Quando uma medalha é conquistada pela primeira vez, abre-se uma janela discreta com luz suave, revelação da ilustração, nome, mensagem própria e um botão para continuar. A animação não se repete: a medalha permanece na coleção e pode ser revista ali sem nova celebração. As ilustrações acompanham a identidade do projeto: folhas e detalhes orgânicos, pergaminhos e estrelas, e circuitos com luzes azuis.
+
+A estrutura foi feita para crescer: o catálogo fica em `js/conquistas-data.js`, a lógica em `js/conquistas.js`, o visual em `css/conquistas.css` e as ilustrações em `assets/images/medalhas/`. Para adicionar uma medalha futura, basta uma nova entrada no catálogo com sua condição e seu SVG.
+
 ## Dados e progresso
 
 O progresso fica apenas no navegador, na chave `evolucao-memoria-progresso-v2` do `localStorage`. A versão anterior (`...-v1`) é migrada automaticamente, preservando fases concluídas e visitadas. O botão “Refazer a jornada” apaga esse progresso após confirmação.
 
 A biblioteca usa outra chave, `biblioteca-progresso-leitura-v1`, e guarda somente os IDs dos capítulos visitados, agrupados por coleção e tema. Respostas, notas e tempo de leitura não são armazenados. A capa, o seletor e os assuntos em preparação não criam nenhum registro; não há vidas, cronômetro, pontuação competitiva nem recompensas. Não há servidor, contas ou envio de dados.
+
+As medalhas visuais têm uma terceira chave, `conquistas-visuais-progresso-v1`, com as datas em que cada lembrança foi encontrada, as atividades de leitura já concluídas e os universos visitados. Ela **lê** as outras duas chaves para avaliar as condições, mas nunca as altera. Assim, o que já estava salvo continua funcionando exatamente como antes.
 
 ## Publicação
 
@@ -111,6 +121,8 @@ Validação feita no navegador: zero erros de console e zero requisições falha
 A expansão foi verificada separadamente: 3 temas e 19 rotas de capítulos abertas individualmente; quatro alternativas e explicação em todas as perguntas; feedback correto/incorreto conferido; trilha, botões anterior/próximo, índice e retorno ao `#inicio` funcionando; 19 IDs salvos apenas em `biblioteca-progresso-leitura-v1`; imagens carregadas com `200` e `image/svg+xml`; sem rolagem horizontal em 390 px, 912 px e 1280 px; retorno à jornada preservando 7 ilhas, 9 marcos e 19 termos. Layout sem overflow ou sobreposição também na jornada original.
 
 A camada do atlas foi verificada da mesma forma: 5 cartões no seletor, 4 páginas de universo e 14 rotas de assuntos exibindo “Em preparação”; retorno claro à capa, ao seletor e ao universo de origem; 19 rotas de capítulos de Tecnologia e Futuro preservadas, com 4 opções e feedback correto/incorreto; zero erros de console e zero requisições falhas; nenhuma rolagem horizontal em 390 px, 912 px e 1280 px. Lighthouse no seletor: acessibilidade, boas práticas e SEO com `1`, sem avisos pendentes.
+
+As medalhas visuais foram verificadas parte a parte: cinco ilustrações carregando, condições avaliadas uma a uma, celebração única por medalha, reabertura sem animação de primeira vez, persistência após atualizar a página e nenhuma alteração nas chaves antigas de progresso.
 
 ## Limitações
 

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none" role="img" aria-label="Medalha com um pergaminho e uma estrela luminosa">
+  <defs>
+    <radialGradient id="mc-disc" cx="50%" cy="40%" r="64%">
+      <stop offset="0" stop-color="#33443d"/>
+      <stop offset=".6" stop-color="#1a2a29"/>
+      <stop offset="1" stop-color="#0a1718"/>
+    </radialGradient>
+    <linearGradient id="mc-ouro" x1="24" y1="22" x2="176" y2="178" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f7e3ae"/>
+      <stop offset=".46" stop-color="#d8ac56"/>
+      <stop offset="1" stop-color="#8d6429"/>
+    </linearGradient>
+    <linearGradient id="mc-pergaminho" x1="62" y1="86" x2="140" y2="138" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f3e2bb"/>
+      <stop offset="1" stop-color="#cfb27d"/>
+    </linearGradient>
+    <filter id="mc-brilho" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="6"/>
+    </filter>
+  </defs>
+
+  <circle cx="100" cy="100" r="88" fill="url(#mc-disc)"/>
+  <circle cx="100" cy="100" r="88" stroke="url(#mc-ouro)" stroke-width="3"/>
+  <circle cx="100" cy="100" r="80" stroke="#e8c878" stroke-opacity=".32" stroke-width="1"/>
+  <circle cx="100" cy="100" r="72" stroke="#e8c878" stroke-opacity=".12" stroke-width="1"/>
+
+  <circle cx="100" cy="70" r="30" fill="#f2d693" opacity=".2" filter="url(#mc-brilho)"/>
+
+  <g fill="url(#mc-ouro)" opacity=".72">
+    <circle cx="100" cy="19" r="2.4"/><circle cx="100" cy="181" r="2.4"/>
+    <circle cx="19" cy="100" r="2.4"/><circle cx="181" cy="100" r="2.4"/>
+  </g>
+
+  <g transform="translate(0 8)">
+    <path d="M58 92c8-6 14-6 20 0v44c-6-6-12-6-20 0V92Z" fill="url(#mc-ouro)" opacity=".9"/>
+    <path d="M142 92c-8-6-14-6-20 0v44c6-6 12-6 20 0V92Z" fill="url(#mc-ouro)" opacity=".9"/>
+    <path d="M78 92h44v44H78z" fill="url(#mc-pergaminho)" opacity=".95"/>
+    <path d="M78 92h44v44H78z" stroke="#a97a35" stroke-opacity=".55" stroke-width="1"/>
+    <g stroke="#8e6b39" stroke-width="1.6" stroke-linecap="round" opacity=".6">
+      <path d="M86 103h28M86 111h28M86 119h20M86 127h24"/>
+    </g>
+    <path d="M58 92c8-6 14-6 20 0M142 92c-8-6-14-6-20 0M58 136c8-6 14-6 20 0M142 136c-8-6-14-6-20 0" stroke="#f5e2ae" stroke-opacity=".65" stroke-width="1.2"/>
+  </g>
+
+  <g transform="translate(100 62)" fill="url(#mc-ouro)">
+    <path d="M0-22 4.5-6 20 0 4.5 6 0 22-4.5 6-20 0-4.5-6Z"/>
+    <circle r="5.5" fill="#fff3cd" opacity=".9"/>
+  </g>
+
+  <g fill="#f6e4b2">
+    <circle cx="54" cy="60" r="1.6" opacity=".75"/>
+    <circle cx="148" cy="56" r="1.8" opacity=".7"/>
+    <circle cx="62" cy="44" r="1.2" opacity=".55"/>
+    <circle cx="139" cy="40" r="1.3" opacity=".6"/>
+  </g>
+</svg>

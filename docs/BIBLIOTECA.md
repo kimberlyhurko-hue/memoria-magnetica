@@ -168,9 +168,11 @@ Formato:
 }
 ```
 
-São salvos **apenas os IDs dos capítulos visitados**. Não há respostas, acertos, notas, recordes, vidas, temporizadores, medalhas ou recompensas. A barra no topo indica a posição de rolagem da leitura; os números “x de y” indicam quantos capítulos já foram abertos. A pergunta de revisão dá explicação imediata tanto para a resposta correta quanto para a incorreta, sem bloquear a navegação.
+São salvos **apenas os IDs dos capítulos visitados**. Não há respostas, acertos, notas, recordes, vidas, temporizadores nem recompensas nesta chave. A barra no topo indica a posição de rolagem da leitura; os números “x de y” indicam quantos capítulos já foram abertos. A pergunta de revisão dá explicação imediata tanto para a resposta correta quanto para a incorreta, sem bloquear a navegação.
 
-Para reiniciar esse histórico, remova a chave acima nas ferramentas do navegador. Isso não afeta o progresso da jornada original, que usa outra chave.
+As medalhas visuais pertencem a outra camada e usam `conquistas-visuais-progresso-v1`. O módulo `js/conquistas.js` lê esta chave de leitura para reconhecer temas concluídos, mas não escreve nela; ou seja, o contrato acima permanece válido. As únicas informações extras ficam na chave própria das medalhas.
+
+Para reiniciar esse histórico, remova a chave acima nas ferramentas do navegador. Isso não afeta o progresso da jornada original nem a coleção de medalhas, que usam outras chaves.
 
 ## Como expandir
 

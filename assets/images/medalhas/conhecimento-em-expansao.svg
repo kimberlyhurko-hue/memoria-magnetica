@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none" role="img" aria-label="Medalha dourada com circuitos e luzes azuis">
+  <defs>
+    <radialGradient id="ce-disc" cx="50%" cy="40%" r="64%">
+      <stop offset="0" stop-color="#264048"/>
+      <stop offset=".6" stop-color="#14282f"/>
+      <stop offset="1" stop-color="#08161c"/>
+    </radialGradient>
+    <linearGradient id="ce-ouro" x1="24" y1="20" x2="176" y2="180" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f8e6b4"/>
+      <stop offset=".45" stop-color="#d9ad55"/>
+      <stop offset="1" stop-color="#886028"/>
+    </linearGradient>
+    <radialGradient id="ce-azul" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#d8f7ff"/>
+      <stop offset=".45" stop-color="#6fd3e8"/>
+      <stop offset="1" stop-color="#2c8ea8"/>
+    </radialGradient>
+    <filter id="ce-brilho" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="4"/>
+    </filter>
+  </defs>
+
+  <circle cx="100" cy="100" r="88" fill="url(#ce-disc)"/>
+  <circle cx="100" cy="100" r="88" stroke="url(#ce-ouro)" stroke-width="3"/>
+  <circle cx="100" cy="100" r="80" stroke="#e8c878" stroke-opacity=".3" stroke-width="1"/>
+  <path d="M100 30 160.6 65v70L100 170 39.4 135V65Z" stroke="url(#ce-ouro)" stroke-width="2" opacity=".8"/>
+  <path d="M100 40 152 69v62l-52 29-52-29V69Z" stroke="#6fd3e8" stroke-opacity=".22" stroke-width="1"/>
+
+  <circle cx="100" cy="100" r="40" fill="#6fd3e8" opacity=".1" filter="url(#ce-brilho)"/>
+
+  <g stroke="url(#ce-ouro)" stroke-width="2" stroke-linecap="round" opacity=".85">
+    <path d="M100 100V62h18"/>
+    <path d="M100 100h30v-18"/>
+    <path d="M100 100v38H82"/>
+    <path d="M100 100H70v18"/>
+    <path d="M100 100 76 76H62"/>
+    <path d="m100 100 24 24h14"/>
+    <path d="m100 100-24-24V62"/>
+    <path d="m100 100 24-24h14"/>
+  </g>
+
+  <g fill="url(#ce-azul)">
+    <circle cx="118" cy="62" r="3.4"/><circle cx="130" cy="82" r="3"/>
+    <circle cx="82" cy="138" r="3.4"/><circle cx="70" cy="118" r="3"/>
+    <circle cx="62" cy="76" r="2.8"/><circle cx="138" cy="124" r="2.8"/>
+    <circle cx="76" cy="62" r="2.4"/><circle cx="124" cy="138" r="2.4"/>
+  </g>
+  <g fill="#6fd3e8" opacity=".36" filter="url(#ce-brilho)">
+    <circle cx="118" cy="62" r="7"/><circle cx="82" cy="138" r="7"/>
+    <circle cx="130" cy="82" r="6"/><circle cx="70" cy="118" r="6"/>
+  </g>
+
+  <g transform="translate(100 100)">
+    <rect x="-17" y="-14" width="34" height="28" rx="5" fill="#142b31" stroke="url(#ce-ouro)" stroke-width="2.2"/>
+    <path d="M-9-6h18M-9 0h18M-9 6h11" stroke="#f0d89c" stroke-width="1.6" stroke-linecap="round" opacity=".85"/>
+    <g stroke="url(#ce-ouro)" stroke-width="1.6" opacity=".7">
+      <path d="M-17-8h-6M-17 0h-6M-17 8h-6M17-8h6M17 0h6M17 8h6"/>
+    </g>
+  </g>
+
+  <g fill="#f6e4b2" opacity=".7">
+    <circle cx="100" cy="21" r="2.2"/><circle cx="100" cy="179" r="2.2"/>
+    <circle cx="21" cy="100" r="2.2"/><circle cx="179" cy="100" r="2.2"/>
+  </g>
+</svg>

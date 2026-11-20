@@ -76,6 +76,11 @@
     if (lista.indexOf(id) === -1) {
       lista.push(id);
       salvarProgresso();
+      if (window.dispatchEvent && typeof CustomEvent === 'function') {
+        window.dispatchEvent(new CustomEvent('memoria:progresso', {
+          detail: { origem: 'biblioteca', tipo: 'visita', colecao: categoriaId, tema: temaId, capitulo: capituloId }
+        }));
+      }
     }
   }
 
@@ -150,6 +155,25 @@
       }
     }
     primeiraRenderizacao = false;
+
+    /* A rota resolvida também chega à camada de medalhas quando há redirecionamento. */
+    if (window.dispatchEvent && typeof CustomEvent === 'function') {
+      const partes = partiesDaRota();
+      const colecao = partes.length ? colecaoPorId(partes[0]) : null;
+      let universoId = null;
+      if (colecao) {
+        const correspondente = ATLAS.find(function (u) {
+          return u.id === colecao.id || u.rota === RAIZ + colecao.id;
+        });
+        universoId = correspondente ? correspondente.id : null;
+      } else if (partes[0] && universoPorId(partes[0])) {
+        universoId = partes[0];
+      }
+      window.dispatchEvent(new CustomEvent('memoria:rota', {
+        detail: { universo: universoId, rota: location.hash || '' }
+      }));
+    }
+
     atualizarBarraLeitura();
   }
 
@@ -610,7 +634,8 @@
 
     biblioteca.innerHTML = trilha(colecao, tema, capitulo) +
       '<div class="bib-view bib-capitulo bib-tema--' + esc(tema.cor || tema.id) + '" ' +
-      'data-colecao="' + esc(colecao.id) + '" data-tema="' + esc(tema.id) + '"' +
+      'data-colecao="' + esc(colecao.id) + '" data-tema="' + esc(tema.id) + '" ' +
+      'data-capitulo="' + esc(capitulo.id) + '"' +
       (capitulo.era ? ' data-era="' + esc(capitulo.era) + '"' : '') + '>' +
       '<div class="bib-leitura-rail" aria-hidden="true"><span id="bibBarraLeitura"></span></div>' +
       '<header class="bib-cap-header">' +
@@ -683,6 +708,20 @@
 
     const sr = grupo.querySelector('.bib-feedback-sr');
     if (sr) sr.textContent = titulo + ' Resposta correta: ' + correta.texto + ' ' + explicacao;
+
+    const vista = biblioteca.querySelector('.bib-view');
+    if (window.dispatchEvent && typeof CustomEvent === 'function') {
+      window.dispatchEvent(new CustomEvent('memoria:progresso', {
+        detail: {
+          origem: 'biblioteca',
+          tipo: 'avaliacao',
+          colecao: vista ? vista.dataset.colecao : null,
+          tema: vista ? vista.dataset.tema : null,
+          capitulo: vista ? vista.dataset.capitulo : null,
+          correta: escolhida.correta
+        }
+      }));
+    }
 
     try { feedback.focus({ preventScroll: true }); } catch (e) { feedback.focus(); }
   }

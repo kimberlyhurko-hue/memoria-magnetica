@@ -136,6 +136,10 @@
   function salvar() {
     estado.atualizadoEm = new Date().toISOString();
     persistir();
+    /* Aviso discreto para a camada de medalhas visuais; não altera este estado. */
+    if (window.dispatchEvent && typeof CustomEvent === 'function') {
+      window.dispatchEvent(new CustomEvent('memoria:progresso', { detail: { origem: 'jornada' } }));
+    }
   }
 
   function concluida(id) { return estado.concluidas.indexOf(id) !== -1; }
@@ -242,14 +246,14 @@
   function noHTML(c, i) {
     const p = ILHAS[i];
     return '<button class="map-node era-' + esc(c.era) + '" type="button" data-acao="ir-fase" data-index="' + i + '" ' +
-      'style="--x:' + p.x + '%;--y:' + p.y + '%;--mx:' + p.mx + '%;--my:' + p.my + '%" ' +
-      'aria-label="Fase ' + esc(c.numero) + ': ' + esc(c.titulo) + '">' +
+      'style="--x:' + p.x + '%;--y:' + p.y + '%;--mx:' + p.mx + '%;--my:' + p.my + '%">' +
       '<span class="node-island">' +
         '<span class="node-selo"><span class="node-numero">' + esc(c.numero) + '</span>' + DATA.ICONS.check + '</span>' +
         '<span class="node-icone">' + DATA.ICONS[c.icone] + '</span>' +
       '</span>' +
       '<span class="node-nome">' + esc(c.titulo) + '</span>' +
       '<span class="node-fase">' + esc(c.fase) + '</span>' +
+      '<span class="sr-only node-estado"></span>' +
       '</button>';
   }
 
@@ -299,7 +303,8 @@
         no.classList.toggle('is-unvisited', !feita && !vistaAgora);
         no.classList.toggle('is-livre', estado.livre);
         const estadoTexto = feita ? ', concluída' : (vistaAgora ? ', visitada' : ', não explorada');
-        no.setAttribute('aria-label', 'Fase ' + c.numero + ': ' + c.titulo + estadoTexto);
+        const estadoNo = no.querySelector('.node-estado');
+        if (estadoNo) estadoNo.textContent = estadoTexto;
       });
     });
     document.querySelectorAll('.rota-luz').forEach(function (p) {
@@ -560,7 +565,7 @@
           '<p class="stage-intro">' + esc(c.intro) + '</p>' +
           '<div class="blocos">' + c.blocos.map(function (b) {
             return '<article class="bloco"><span class="bloco-icone">' + DATA.ICONS[b.icone] + '</span>' +
-              '<div><h4>' + esc(b.titulo) + '</h4><p>' + esc(b.texto) + '</p></div></article>';
+              '<div><h3>' + esc(b.titulo) + '</h3><p>' + esc(b.texto) + '</p></div></article>';
           }).join('') + '</div>' +
           '<div class="detalhes-fase">' +
             listaHTML('Acontecimentos', c.acontecimentos, 'ano') +
@@ -982,6 +987,9 @@
     ultimoFoco = null;
   }
 
+  /* API mínima para a camada de medalhas reutilizar o modal já existente. */
+  window.MEMORIA_MODAL = { abrir: abrirModal, fechar: fecharModal };
+
   /* ---------------- Eventos centralizados ---------------- */
 
   function tratarClique(e) {
@@ -1031,7 +1039,7 @@
   }
 
   function observarNavegacao() {
-    const secoes = ['prologo', 'mapa', 'jornada', 'linha-do-tempo', 'glossario', 'comparacao', 'conquistas'].map($);
+    const secoes = ['prologo', 'mapa', 'jornada', 'linha-do-tempo', 'glossario', 'comparacao', 'conquistas', 'medalhas'].map($);
     if (!('IntersectionObserver' in window)) return;
     const obs = new IntersectionObserver(function (entradas) {
       entradas.forEach(function (entrada) {

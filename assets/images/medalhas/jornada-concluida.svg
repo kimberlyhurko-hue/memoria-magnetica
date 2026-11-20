@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none" role="img" aria-label="Medalha com louros, livro aberto e uma estrela">
+  <defs>
+    <radialGradient id="jc-disc" cx="50%" cy="40%" r="64%">
+      <stop offset="0" stop-color="#354532"/>
+      <stop offset=".6" stop-color="#1a2a22"/>
+      <stop offset="1" stop-color="#0a1714"/>
+    </radialGradient>
+    <linearGradient id="jc-ouro" x1="24" y1="20" x2="176" y2="180" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f8e6b4"/>
+      <stop offset=".45" stop-color="#dab05a"/>
+      <stop offset="1" stop-color="#8b6229"/>
+    </linearGradient>
+    <linearGradient id="jc-louro" x1="46" y1="60" x2="80" y2="150" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#e9cb83"/>
+      <stop offset="1" stop-color="#9fbf7c"/>
+    </linearGradient>
+    <filter id="jc-brilho" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="6"/>
+    </filter>
+  </defs>
+
+  <circle cx="100" cy="100" r="88" fill="url(#jc-disc)"/>
+  <circle cx="100" cy="100" r="88" stroke="url(#jc-ouro)" stroke-width="3"/>
+  <circle cx="100" cy="100" r="80" stroke="#e8c878" stroke-opacity=".34" stroke-width="1"/>
+  <circle cx="100" cy="100" r="73" stroke="#e8c878" stroke-opacity=".12" stroke-width="1"/>
+
+  <circle cx="100" cy="96" r="46" fill="#e8c878" opacity=".11" filter="url(#jc-brilho)"/>
+
+  <g stroke="url(#jc-louro)" stroke-width="2.4" stroke-linecap="round" fill="none">
+    <path d="M64 150C46 128 42 98 52 70"/>
+    <path d="M136 150c18-22 22-52 12-80"/>
+  </g>
+  <g fill="url(#jc-louro)" opacity=".92">
+    <path d="M52 76c-12-3-19-11-20-22 12 1 20 9 20 22Z"/>
+    <path d="M49 94c-13-1-21-8-23-19 13 0 22 8 23 19Z"/>
+    <path d="M51 112c-12 1-21-5-25-16 13-2 22 4 25 16Z"/>
+    <path d="M58 129c-11 3-20 0-26-10 12-4 21-1 26 10Z"/>
+    <path d="M148 76c12-3 19-11 20-22-12 1-20 9-20 22Z"/>
+    <path d="M151 94c13-1 21-8 23-19-13 0-22 8-23 19Z"/>
+    <path d="M149 112c12 1 21-5 25-16-13-2-22 4-25 16Z"/>
+    <path d="M142 129c11 3 20 0 26-10-12-4-21-1-26 10Z"/>
+  </g>
+
+  <g transform="translate(0 12)">
+    <path d="M100 82c-15-11-32-13-48-8v43c16-5 33-3 48 8Z" fill="url(#jc-ouro)" opacity=".94"/>
+    <path d="M100 82c15-11 32-13 48-8v43c-16-5-33-3-48 8Z" fill="url(#jc-ouro)" opacity=".84"/>
+    <path d="M100 82v43" stroke="#6d4b20" stroke-width="2.2" opacity=".75"/>
+    <g stroke="#6d4b20" stroke-width="1.1" opacity=".5">
+      <path d="M65 84c10-1 20 1 28 6M65 93c10-1 20 1 28 6M65 102c10-1 20 1 28 6"/>
+      <path d="M135 84c-10-1-20 1-28 6M135 93c-10-1-20 1-28 6M135 102c-10-1-20 1-28 6"/>
+    </g>
+  </g>
+
+  <g transform="translate(100 52)" fill="url(#jc-ouro)">
+    <path d="M0-18 4-5 17 0 4 5 0 18-4 5-17 0-4-5Z"/>
+    <circle r="4" fill="#fff4cf"/>
+  </g>
+
+  <g fill="#f6e4b2" opacity=".75">
+    <circle cx="62" cy="48" r="1.4"/><circle cx="139" cy="46" r="1.5"/>
+    <circle cx="52" cy="158" r="1.3"/><circle cx="148" cy="158" r="1.3"/>
+  </g>
+</svg>
